@@ -1,103 +1,77 @@
-import Image from "next/image";
+"use client";
+
+import Frontend from "@/components/home/frontend";
+import Backend from "@/components/home/backend";
+import Hero from "@/components/home/hero";
+import Projects from "@/components/home/projects"; // ✅ Import your new section
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  // Hero fade out as you scroll
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const heroTranslate = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
+
+  // Frontend section slide
+  const frontendTranslate = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66],
+    ["100vh", "0vh", "0vh"]
+  );
+
+  // Backend section slide (stops at 25% height)
+  const backendTranslate = useTransform(
+    scrollYProgress,
+    [0.33, 0.66, 1],
+    ["100vh", "20vh", "20vh"] // 👈 stops at 25% of viewport height
+  );
+
+  // Projects section slide (after backend)
+  const projectsTranslate = useTransform(
+    scrollYProgress,
+    [0.66, 1],
+    ["100vh", "40vh"]
+  );
+
+  return (
+    <div ref={containerRef} className="relative h-[400vh]">
+      {/* Hero Section */}
+      <motion.section
+        style={{ opacity: heroOpacity, y: heroTranslate }}
+        className="h-screen flex items-center justify-center fixed top-0 left-0 w-full bg-black z-10"
+      >
+        <Hero />
+      </motion.section>
+
+      {/* Frontend Section */}
+      <motion.section
+        style={{ y: frontendTranslate }}
+        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-20"
+      >
+        <Frontend />
+      </motion.section>
+
+      {/* Backend Section (stops at 1/4 height) */}
+      <motion.section
+        style={{ y: backendTranslate }}
+        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800  fixed rounded-2xl top-0 left-0 w-full z-30"
+      >
+        <Backend />
+      </motion.section>
+
+      {/* Projects Section */}
+      <motion.section
+        style={{ y: projectsTranslate }}
+        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black rounded-2xl border border-gray-800  fixed top-0 left-0 w-full z-40"
+      >
+        <Projects />
+      </motion.section>
     </div>
   );
 }
