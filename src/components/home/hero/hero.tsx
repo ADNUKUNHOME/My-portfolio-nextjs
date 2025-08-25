@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import Header from "./hero/header";
-import MyName from "./hero/myName";
-import BottomGride from "./hero/bottomGride";
-import AnimatingBg from "./hero/bg";
+import Header from "./header";
+import MyName from "./myName";
+import BottomGride from "./bottomGride";
+import AnimatingBg from "./bg";
 
 export default function Hero() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
