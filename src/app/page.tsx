@@ -130,7 +130,7 @@ export default function Home() {
       {/* Projects */}
       <motion.section
         style={{ y: projectsTranslate }}
-        className="h-screen flex flex-col justify-start items-center bg-[#1f1c19] text-[#e8e8e3] border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-60 overflow-y-auto p-8"
+        className="h-screen flex flex-col justify-start items-center bg-black text-[#1f1c19] border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-60 overflow-y-auto p-8"
       >
         <Projects />
       </motion.section>

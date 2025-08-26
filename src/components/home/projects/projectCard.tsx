@@ -1,0 +1,82 @@
+import { useState } from "react";
+import useShuffleText from "./shuffleText";
+import { MotionDiv } from "@/lib/motion";
+import BlobMedia from "./blobMedia";
+import { Button } from "@/components/ui/button";
+
+const ProjectCard = ({
+    title,
+    description,
+    tech,
+    index,
+    videoSrc,
+    imageSrc,
+    liveLink,
+    githubLink,
+}: {
+    title: string;
+    description: string;
+    tech: string[];
+    index: number;
+    videoSrc: string;
+    imageSrc: string;
+    liveLink: string;
+    githubLink: string;
+}) => {
+    const [inView, setInView] = useState(false);
+    const displayTitle = useShuffleText(title, inView);
+
+    return (
+        <MotionDiv
+            onViewportEnter={() => setInView(true)}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: index * 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-[#2a2622] border border-gray-700 shadow-lg"
+        >
+            {/* First: Video */}
+            <BlobMedia type="video" src={videoSrc} liveLink={liveLink} />
+
+            {/* Text */}
+            <div className="flex flex-col justify-between flex-1">
+                <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#e8e8e3] mb-2">{displayTitle}</h3>
+                    <p className="text-gray-400 text-sm md:text-base mb-4">{description}</p>
+                    <div className="flex flex-wrap gap-2">
+                        {tech.map((t, i) => (
+                            <span
+                                key={i}
+                                className="text-xs md:text-sm px-3 py-1 rounded-full bg-gray-800 text-gray-300 border border-gray-600"
+                            >
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-4 mt-4">
+                    <Button
+                        variant="outline"
+                        className="rounded-xl text-black hover:bg-[#161412] hover:text-white"
+                        onClick={() => window.open(githubLink, "_blank")}
+                    >
+                        GitHub
+                    </Button>
+                    <Button
+                        className="rounded-xl hover:bg-gray-800"
+                        onClick={() => window.open(liveLink, "_blank")}
+                    >
+                        Live Demo
+                    </Button>
+                </div>
+            </div>
+
+            {/* Second: Image */}
+            <BlobMedia type="image" src={imageSrc} githubLink={githubLink} />
+        </MotionDiv>
+    );
+};
+
+export default ProjectCard;

@@ -29,7 +29,7 @@ export default function OtherTools() {
             <Separator className="w-full bg-gray-300 mt-3 md:mt-8" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center mt-5 md:mt-12 w-full gap-5">
-                <div className="hidden md:flex items-center justify-center">
+                <div className="flex items-center justify-center">
                     <p className="text-gray-400 text-sm md:text-lg font-medium mb-5 max-w-md">
                         I leverage essential tools and services to
                         streamline development, optimize performance, and ensure smooth deployment.
