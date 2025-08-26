@@ -4,10 +4,15 @@ import { Separator } from "../../../ui/separator";
 import { useState } from "react";
 import MenuButton from "./hamburgerButton";
 import { MotionSection } from "@/lib/motion";
+import SkillsCard from "../skillCard";
+import { MySkillsSection } from "@/constants/mySKills";
 
 
 export default function Frontend() {
     const [open, setOpen] = useState(false);
+    const frontendSkills = MySkillsSection[0];
+    const description = frontendSkills.description;
+    const skills = frontendSkills.skills;
 
     return (
         <MotionSection
@@ -38,19 +43,10 @@ export default function Frontend() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center mt-5 md:mt-12 w-full">
                 <div className="hidden md:block"></div>
-                <div className="flex flex-col gap-4">
-                    <p className="text-gray-400 text-lg font-medium mb-5 max-w-md">
-                        I craft engaging and responsive user interfaces using modern frontend technologies.
-                        My focus is on building performant, accessible, and visually appealing applications
-                        that deliver seamless user experiences across devices
-                    </p>
-                    <p className="text-3xl font-bold text-gray-300"><span className="text-lg text-gray-500 mr-5">01</span>React, Next.js, Tailwind</p>
-                    <Separator className="max-w-md bg-gray-300" />
-                    <p className="text-3xl font-bold text-gray-300"><span className="text-lg text-gray-500 mr-5">01</span>React, Next.js, Tailwind</p>
-                    <Separator className="max-w-md bg-gray-300" />
-                    <p className="text-3xl font-bold text-gray-300"><span className="text-lg text-gray-500 mr-5">01</span>React, Next.js, Tailwind</p>
-                    <Separator className="max-w-md bg-gray-300" />
-                </div>
+                <SkillsCard
+                    description={description}
+                    skills={skills}
+                />
             </div>
         </MotionSection>
     );
