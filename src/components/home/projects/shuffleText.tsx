@@ -7,7 +7,7 @@ export default function useShuffleText(text: string, trigger: boolean, duration 
         if (!trigger) return;
 
         let i = 0;
-        const chars = "AFHHIGURIO/JNFDB";
+        const chars = "AFHerhafKFUREIR";
         const interval = setInterval(() => {
             setDisplayText(
                 text

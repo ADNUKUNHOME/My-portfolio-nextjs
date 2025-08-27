@@ -4,6 +4,15 @@ type SkillSection = {
     skills: string[];
 }
 
+type SkillsGroup = Record<string, string[]>;
+
+
+interface Category {
+    title: string;
+    skills: SkillsGroup;
+    color: string;
+}
+
 export const MySkillsSection: SkillSection[] = [
     {
         description: `I craft engaging and responsive user interfaces using modern frontend technologies.
@@ -34,3 +43,36 @@ export const MySkillsSection: SkillSection[] = [
         ]
     },
 ]
+
+
+export const SkillCategories: Category[] = [
+    {
+        title: "Frontend",
+        skills: {
+            Languages: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
+            "Frameworks & Libraries": ["React.js", "Next.js", "Vite"],
+            "UI & Styling": ["Tailwind CSS", "ShadCN UI", "Framer Motion"],
+            "State Management": ["Redux", "Context API"],
+        },
+        color: "from-blue-500 to-cyan-400",
+    },
+    {
+        title: "Backend",
+        skills: {
+            "Runtime & Frameworks": ["Node.js", "Express.js"],
+            "APIs & Authentication": ["RESTful APIs", "JWT", "Clerk", "NextAuth.js"],
+            "Databases & ORM": ["MongoDB", "Mongoose", "Neon (PostgreSQL)", "Prisma"],
+        },
+        color: "from-purple-500 to-pink-400",
+    },
+    {
+        title: "Other Technologies",
+        skills: {
+            "Dev Tools & Deployment": ["Git & GitHub", "Thunder Client", ".env Management", "Vercel", "Render"],
+            "Cloud & Media": ["Cloudinary", "UploadThing"],
+            Payments: ["Stripe", "PayPal"],
+            "AI Integration": ["OpenAI (ChatGPT API)", "Gemini AI", "LangChain"],
+        },
+        color: "from-green-400 to-emerald-500",
+    },
+];

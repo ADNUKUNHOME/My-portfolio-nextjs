@@ -9,12 +9,14 @@ import Frontend from "@/components/home/skills/frontend/frontend";
 import Backend from "@/components/home/skills/backend/backend";
 import OtherTools from "@/components/home/skills/otherTools/otherTools";
 import Projects from "@/components/home/projects/projects";
+import MenuButton from "@/components/home/skills/frontend/hamburgerButton";
+import ShowscaseSections from "@/components/home/showcaseSections/showcaseSections";
 
 export default function Home() {
   const containerRef = useRef(null);
+
   function useResponsiveOffset() {
     const [offsets, setOffsets] = useState({ backend: "17vh", other: "34vh" });
-
     useEffect(() => {
       function updateOffsets() {
         const width = window.innerWidth;
@@ -79,7 +81,7 @@ export default function Home() {
   );
 
 
-  const projectsTranslate = useTransform(
+  const showcaseTranslate = useTransform(
     scrollYProgress,
     [4 * step, 5 * step, 1],
     ["100vh", "0vh", "0vh"]
@@ -129,10 +131,10 @@ export default function Home() {
 
       {/* Projects */}
       <motion.section
-        style={{ y: projectsTranslate }}
-        className="h-screen flex flex-col justify-start items-center bg-black text-[#1f1c19] border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-60 overflow-y-auto p-8"
+        style={{ y: showcaseTranslate }}
+        className="h-screen flex flex-col justify-start items-center bg-black text-[#1f1c19] border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-60 overflow-y-auto py-8"
       >
-        <Projects />
+        <ShowscaseSections />
       </motion.section>
     </div>
   );

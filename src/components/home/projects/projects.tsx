@@ -7,10 +7,9 @@ import { MotionDiv } from "@/lib/motion";
 
 
 const Projects = () => {
-
     return (
         <MotionDiv
-            className="max-w-5xl w-full flex flex-col gap-10"
+            className="flex flex-col gap-10 w-full max-w-5xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}

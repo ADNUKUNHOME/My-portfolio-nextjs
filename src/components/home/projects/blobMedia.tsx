@@ -69,9 +69,8 @@ const BlobMedia = ({
                     <MotionDiv
                         key="blob"
                         className="absolute w-20 h-20 rounded-full flex items-center justify-center
-                 text-white font-semibold 
-                 bg-white/20 dark:bg-black/20
-                 backdrop-blur-lg border border-white/30 dark:border-black/30
+                 text-white font-semibold bg-white/20 
+                 backdrop-blur-lg border border-white/30
                  pointer-events-none"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}

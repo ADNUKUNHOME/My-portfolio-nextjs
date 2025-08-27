@@ -1,56 +1,75 @@
-'use client';
+"use client";
 
-import { Separator } from "@/components/ui/separator"; // if you already use it
-import { MotionSection } from "@/lib/motion";
+import { motion } from "framer-motion";
+
+const timeline = [
+    {
+        title: "BCA (Bachelor of Computer Applications)",
+        subtitle: "Indira Gandhi National Open University (IGNOU)",
+        period: "First Year Student · 2025 – Present",
+    },
+    {
+        title: "Self-Taught Full Stack Developer",
+        subtitle: "Focused on MERN, Next.js, and modern web technologies",
+        period: "Ongoing · Project-based Learning",
+    },
+    {
+        title: "Higher Secondary (Plus Two)",
+        subtitle: "Humanities Stream",
+        period: "Completed · 2023",
+    },
+];
 
 export default function Education() {
     return (
-        <section
-            className="absolute top-0 w-full flex flex-col py-5  text-[#1f1c19] px-6  h-[300px] overflow-auto"
-        >
+        <section className="w-full py-20 px-4 md:px-10 lg:px-20 text-white">
             {/* Header */}
-            <div className="flex items-center justify-between">
-                <h2 className="hidden md:block text-5xl tracking-tighter items-center font-bold">(04)</h2>
-                <div className="flex items-center justify-center">
-                    <h2 className="text-2xl md:text-3xl lg:text-5xl whitespace-nowrap tracking-tighter items-center font-bold md:mr-15">
-                        EDUCATION
-                    </h2>
-                </div>
-            </div>
+            <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center"
+            >
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold bg-orange-50 bg-clip-text text-transparent">
+                    EDUCATION
+                </h2>
+                <p className="mt-4 text-gray-400 max-w-xl text-sm md:text-base">
+                    My academic journey blends formal education with self-driven learning,
+                    combining structured study and hands-on projects to grow as a full-stack developer.
+                </p>
+            </motion.div>
 
-            {/* Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center mt-5 md:mt-12 w-full">
-                {/* Left side (intro) */}
-                <div className="hidden md:flex items-center justify-center">
-                    <p className="text-[#e8e8e3] bg-[#1f1c19] rounded-2xl p-5 text-sm md:text-lg font-medium mb-5 max-w-md shadow-lg border border-gray-700/40">
-                        My academic journey reflects both formal education and self-driven learning.
-                        I combine structured study with practical, hands-on experience to grow as a full stack developer.
-                    </p>
-                </div>
-
-                {/* Right side (cards) */}
-                <div className="flex flex-col gap-6">
-                    {/* Card 1 */}
-                    <div className="bg-[#1f1c19] rounded-2xl p-5 shadow-lg border border-gray-700/40">
-                        <h3 className="text-lg md:text-xl font-bold text-[#e8e8e3]">BCA (Bachelor of Computer Applications)</h3>
-                        <p className="text-gray-400 text-sm md:text-base mt-1">Indira Gandhi National Open University (IGNOU)</p>
-                        <p className="text-gray-500 text-xs md:text-sm mt-2">First Year Student · 2024 – Present</p>
-                    </div>
-
-                    {/* Card 2 */}
-                    <div className="bg-[#1f1c19] rounded-2xl p-5 shadow-lg border border-gray-700/40">
-                        <h3 className="text-lg md:text-xl font-bold text-[#e8e8e3]">Self-Taught Full Stack Developer</h3>
-                        <p className="text-gray-400 text-sm md:text-base mt-1">Focused on MERN, Next.js, and modern web technologies</p>
-                        <p className="text-gray-500 text-xs md:text-sm mt-2">Ongoing · Project-based Learning</p>
-                    </div>
-
-                    {/* Card 3 */}
-                    <div className="bg-[#1f1c19] rounded-2xl p-5 shadow-lg border border-gray-700/40">
-                        <h3 className="text-lg md:text-xl font-bold text-[#e8e8e3]">Higher Secondary (Plus Two)</h3>
-                        <p className="text-gray-400 text-sm md:text-base mt-1">Humanities Stream</p>
-                        <p className="text-gray-500 text-xs md:text-sm mt-2">Completed · 2023</p>
-                    </div>
-                </div>
+            {/* Modern Cards */}
+            <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {timeline.map((item, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: i * 0.15 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 1.2 }}
+                        className="relative rounded-2xl p-[1px] animate-gradient-border bg-[length:200%_200%] 
+                        bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500
+                        hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300"
+                    >
+                        <div className="h-full w-full rounded-2xl bg-[#111] p-6 flex flex-col justify-between">
+                            <div>
+                                <h3 className="text-lg md:text-xl font-bold text-white">
+                                    {item.title}
+                                </h3>
+                                <p className="text-gray-400 text-sm md:text-base mt-2">
+                                    {item.subtitle}
+                                </p>
+                            </div>
+                            <p className="text-gray-500 text-xs md:text-sm mt-4">
+                                {item.period}
+                            </p>
+                        </div>
+                    </motion.div>
+                ))}
             </div>
         </section>
     );
