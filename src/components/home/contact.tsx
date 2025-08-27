@@ -1,9 +1,51 @@
 "use client";
 
+import { SendEmailTo } from "@/actions/sendEmail";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Loader2 } from "lucide-react";
+import React, { useState } from "react";
+import { toast } from "sonner";
+import { Button } from "../ui/button";
 
 const Contact = () => {
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    })
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!formData.email || !formData.message) {
+            toast.error("Please provide your email and message!");
+            return;
+        }
+        setLoading(true);
+
+        try {
+
+            const res = await SendEmailTo({ formData });
+            if (res.success) {
+                toast.success(res.message || "Message Send Successfully");
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: ""
+                });
+            } else {
+                toast.error(res.message || "Failed to send your message!");
+            }
+        } catch (error) {
+            toast.error("Failed Submitting your Message!")
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
     return (
         <section
             id="contact"
@@ -36,28 +78,37 @@ const Contact = () => {
                 transition={{ duration: 0.8 }}
                 className="w-full max-w-lg bg-white/5 backdrop-blur-lg rounded-2xl shadow-[0_0_25px_rgba(255,200,0,0.15)] hover:shadow-[0_0_40px_rgba(255,200,0,0.15)] p-8"
             >
-                <form className="space-y-5">
+                <form onSubmit={handleFormSubmit} className="space-y-5">
                     <input
                         type="text"
                         placeholder="Your Good Name"
+                        onChange={handleInputChange}
+                        name="name"
+                        value={formData.name}
                         className="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     />
                     <input
                         type="email"
                         placeholder="Wanna Hear Back? Add You Email."
+                        onChange={handleInputChange}
+                        name="email"
+                        value={formData.email}
                         className="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     />
                     <textarea
                         rows={4}
                         placeholder="Your Message"
+                        onChange={handleInputChange}
+                        name="message"
+                        value={formData.message}
                         className="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     ></textarea>
-                    <button
+                    <Button
                         type="submit"
                         className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:opacity-90 transition"
                     >
-                        Send Message
-                    </button>
+                        {loading ? <><Loader2 className="animate-spin mr-2" />Sending Your Message...</> : "Send Message"}
+                    </Button>
                 </form>
             </motion.div>
 
