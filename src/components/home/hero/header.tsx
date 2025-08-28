@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MotionA, MotionSpan } from "@/lib/motion";
 
+
 const MenuItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
     <MotionA
         href={href}
@@ -46,7 +47,7 @@ export default function Header() {
         return () => { document.body.style.overflow = original; };
     }, [open]);
 
-    const navItems = ["Home", "About", "Projects", "Contact"];
+    const navItems = ["About", "Projects", "Education", "Skills", "Contact"];
 
     return (
         <header className="absolute top-0 left-0 w-full p-5 flex justify-between items-center z-[1000]">

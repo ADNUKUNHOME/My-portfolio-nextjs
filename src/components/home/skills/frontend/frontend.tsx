@@ -2,7 +2,7 @@
 
 import { Separator } from "../../../ui/separator";
 import { useState } from "react";
-import MenuButton from "./hamburgerButton";
+import MenuButton from "../../../common/hamburgerButton";
 import { MotionSection } from "@/lib/motion";
 import SkillsCard from "../skillCard";
 import { MySkillsSection } from "@/constants/mySKills";
@@ -22,20 +22,17 @@ export default function Frontend() {
             viewport={{ once: true, amount: 0.4 }}
             className="min-h-screen w-full flex flex-col pt-5 text-[#e8e8e3] px-6"
         >
-            <div className="flex md:hidden w-full items-center justify-end">
-                <MenuButton setOpen={setOpen} />
+            <div className="invisible md:hidden">
+                <MenuButton setOpen={setOpen} open={open} />
             </div>
             <Separator className="block md:hidden w-full bg-gray-300 my-3" />
 
             <div className="flex items-center justify-between">
                 <h2 className="hidden md:block text-5xl tracking-tighter items-center font-bold">(01)</h2>
                 <div className="flex items-center justify-center">
-                    <h2 className="text-2xl md:text-3xl lg:text-5xl whitespace-nowrap tracking-tighter items-center font-bold md:mr-10">
+                    <h2 className="text-2xl md:text-3xl lg:text-5xl whitespace-nowrap tracking-tighter items-center font-bold md:mr-25">
                         FRONTEND DEVELOPMENT
                     </h2>
-                    <div className="hidden md:flex">
-                        <MenuButton setOpen={setOpen} />
-                    </div>
                 </div>
             </div>
 

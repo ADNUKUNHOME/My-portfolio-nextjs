@@ -61,7 +61,7 @@ const FallbackIcon: IconType = Si.SiCoder;
 
 const AllSkills = () => {
     return (
-        <section className="w-full max-w-7xl mx-auto px-6 py-20 text-white">
+        <section className="w-full max-w-5xl mx-auto px-6 py-20 text-white">
             {/* Heading */}
             <motion.h2
                 initial={{ opacity: 0, y: -20 }}
