@@ -1,14 +1,14 @@
 "use client";
 
 import { MotionDiv } from "@/lib/motion";
-import { Rocket, Cpu, Code, CloudLightning } from "lucide-react";
+import { Rocket, Cpu, Code, Brain } from "lucide-react";
 
 const BottomLeft = () => {
     const features = [
         { icon: Rocket, label: "Fast & Efficient" },
         { icon: Cpu, label: "Scalable Architecture" },
         { icon: Code, label: "Clean Code" },
-        { icon: CloudLightning, label: "AI Powered" },
+        { icon: Brain, label: "AI Powered" },
     ];
 
     return (

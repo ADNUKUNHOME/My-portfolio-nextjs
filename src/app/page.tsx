@@ -57,19 +57,19 @@ export default function Home() {
 
   const frontendTranslate = useTransform(
     scrollYProgress,
-    [step, 2 * step, 3 * step],
+    [step + 0.2, 2 * step, 3 * step],
     ["100vh", "0vh", "0vh"]
   );
 
   const backendTranslate = useTransform(
     scrollYProgress,
-    [2 * step, 3 * step, 4 * step],
+    [2.2 * step, 3 * step, 4 * step],
     ["100vh", backend, backend]
   );
 
   const otherToolsTranslate = useTransform(
     scrollYProgress,
-    [3 * step, 4 * step, 5 * step],
+    [3.2 * step, 4 * step, 5 * step],
     ["100vh", other, other]
   );
 

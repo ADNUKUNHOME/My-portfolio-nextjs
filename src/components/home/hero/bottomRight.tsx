@@ -3,10 +3,31 @@
 import { MotionDiv, MotionA } from "@/lib/motion";
 import { Github, Linkedin, Download, Code, Cpu, Rocket, CloudLightning } from "lucide-react";
 import ContactButton from "./contactButton";
+import { toast } from "sonner";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const BottomRight = () => {
     const floatingIcons = [Code, Cpu, Rocket, CloudLightning];
     const iconColors = ["#ff00ff", "#00ffff", "#ffff00", "#ff00ff"];
+
+    const handleDownload = () => {
+        try {
+            const link = document.createElement("a");
+            link.href = "/resume.pdf";
+            link.setAttribute("download", "MUHAMMAD_ADNAN_RESUME.pdf");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            toast.success("My Resume is downloading. Please check your downloads folder.");
+        } catch (error) {
+            toast.error("Failed to download resume. Please try again.");
+        }
+    };
 
     return (
         <MotionDiv className="relative w-full h-full flex flex-col items-center md:items-end justify-center gap-3 md:gap-8">
@@ -23,7 +44,7 @@ const BottomRight = () => {
                     <MotionDiv
                         key={i}
                         className="hidden md:block absolute"
-                        initial={{ opacity: 0, scale: 0.5, y: 30 }} // entrance
+                        initial={{ opacity: 0, scale: 0.5, y: 30 }}
                         animate={{
                             opacity: [0, 1],
                             scale: [0.5, 1],
@@ -54,47 +75,65 @@ const BottomRight = () => {
 
             {/* Social Links with entrance animation */}
             <div className="flex gap-6 mt-6 z-10">
-                {[Github, Linkedin, Download].map((Icon, i) => (
-                    <MotionA
-                        key={i}
-                        initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                        animate={{
-                            opacity: 1,
-                            y: 0,
-                            scale: 1,
-                            borderColor: [
-                                "rgba(255,0,255,0.6)",
-                                "rgba(0,255,255,0.6)",
-                                "rgba(255,255,0,0.6)",
-                                "rgba(255,0,255,0.6)",
-                            ],
-                        }}
-                        transition={{
-                            opacity: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
-                            y: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
-                            scale: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
-                            borderColor: {
-                                repeat: Infinity,
-                                duration: 4,
-                                ease: "linear",
-                                delay: i * 0.2,
-                            },
-                        }}
-                        whileHover={{ scale: 1.3, rotate: [0, 10, -10, 0] }}
-                        href={
-                            i === 0
-                                ? "https://github.com/ADNUKUNHOME"
-                                : i === 1
-                                    ? "https://www.linkedin.com/in/muhammad-adnan-a479052a1"
-                                    : "/resume.pdf"
-                        }
-                        target="_blank"
-                        className="relative w-12 h-12 flex items-center justify-center rounded-full border-2 border-white/20 backdrop-blur-sm text-white shadow-lg hover:border-white/60 hover:scale-105 transition"
-                    >
-                        <Icon className="w-6 h-6" />
-                    </MotionA>
+                {[Github, Linkedin, Download].map((Icon, i) => {
+                    const isResume = i === 2;
 
-                ))}
+                    const button = (
+                        <MotionA
+                            key={i}
+                            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                                borderColor: [
+                                    "rgba(255,0,255,0.6)",
+                                    "rgba(0,255,255,0.6)",
+                                    "rgba(255,255,0,0.6)",
+                                    "rgba(255,0,255,0.6)",
+                                ],
+                            }}
+                            transition={{
+                                opacity: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
+                                y: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
+                                scale: { duration: 0.6, delay: 0.5 + i * 0.2, ease: "easeOut" },
+                                borderColor: {
+                                    repeat: Infinity,
+                                    duration: 4,
+                                    ease: "linear",
+                                    delay: i * 0.2,
+                                },
+                            }}
+                            whileHover={{ scale: 1.3, rotate: [0, 10, -10, 0] }}
+                            href={
+                                isResume
+                                    ? undefined
+                                    : i === 0
+                                        ? "https://github.com/ADNUKUNHOME"
+                                        : "https://www.linkedin.com/in/muhammad-adnan-a479052a1"
+                            }
+                            onClick={isResume ? handleDownload : undefined}
+                            target={isResume ? undefined : "_blank"}
+                            className="relative w-12 h-12 flex items-center justify-center rounded-full border-2 border-white/20 backdrop-blur-sm text-white shadow-lg hover:border-white/60 hover:scale-105 transition cursor-pointer"
+                        >
+                            <Icon className="w-6 h-6" />
+                        </MotionA>
+                    );
+
+                    // Wrap only Resume with Tooltip
+                    return isResume ? (
+                        <TooltipProvider key={i}>
+                            <Tooltip>
+                                <TooltipTrigger asChild>{button}</TooltipTrigger>
+                                <TooltipContent className="bg-gray-200 text-black">
+                                    <p>Download Resume</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    ) : (
+                        button
+                    );
+                })}
             </div>
 
             {/* Contact Button with entrance animation */}
