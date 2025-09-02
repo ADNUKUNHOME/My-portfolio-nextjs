@@ -57,7 +57,7 @@ export default function Home() {
 
   const frontendTranslate = useTransform(
     scrollYProgress,
-    [step + 0.2, 2 * step, 3 * step],
+    [step, 2 * step, 3 * step],
     ["100vh", "0vh", "0vh"]
   );
 

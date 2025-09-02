@@ -8,7 +8,7 @@ type MenuButtonProps = {
 };
 
 const MenuButton: React.FC<MenuButtonProps> = ({ setOpen, open }) => {
-    const navItems = ["Home", "About", "Projects", "Education", "Skills", "Contact"];
+    const navItems = ["Home", "About", "Projects", "Education", "Skills", "Blogs", "Contact"];
     return (
         <>
             {
@@ -76,7 +76,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({ setOpen, open }) => {
                                             transition={{ delay: 0.1 * i, duration: 0.4 }}
                                         >
                                             <Link
-                                                href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                                                href={item === "Home" ? "/" : item === "Blogs" ? "/blogs" :  `#${item.toLowerCase()}`}
                                                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-300 tracking-tighter relative group"
                                                 onClick={() => setOpen(false)}
                                             >

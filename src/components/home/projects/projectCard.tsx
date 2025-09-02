@@ -13,6 +13,7 @@ const ProjectCard = ({
     imageSrc,
     liveLink,
     githubLink,
+    year,
 }: {
     title: string;
     description: string;
@@ -22,6 +23,7 @@ const ProjectCard = ({
     imageSrc: string;
     liveLink: string;
     githubLink: string;
+    year: string
 }) => {
     const [inView, setInView] = useState(false);
     const displayTitle = useShuffleText(title, inView);
@@ -33,13 +35,13 @@ const ProjectCard = ({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: index * 0.2 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-[#2a2622] border border-gray-700 shadow-lg"
+            className="flex flex-col md:flex-row gap-6 rounded-2xl bg-[#2a2622] border border-gray-700 shadow-lg"
         >
             {/* First: Video */}
             <BlobMedia type="video" src={videoSrc} liveLink={liveLink} />
 
             {/* Text */}
-            <div className="flex flex-col justify-between flex-1">
+            <div className="flex flex-col justify-cneter items-center gap-5 m-6 flex-1">
                 <div>
                     <h3 className="text-2xl md:text-3xl font-bold text-[#e8e8e3] mb-2">{displayTitle}</h3>
                     <p className="text-gray-400 text-sm md:text-base mb-4">{description}</p>
@@ -56,22 +58,21 @@ const ProjectCard = ({
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-4 mt-4">
-                    <Button
-                        variant="outline"
-                        className="rounded-xl text-black hover:bg-[#161412] hover:text-white"
-                        onClick={() => window.open(githubLink, "_blank")}
-                    >
-                        GitHub
-                    </Button>
-                    <Button
-                        className="rounded-xl hover:bg-gray-800"
-                        onClick={() => window.open(liveLink, "_blank")}
-                    >
-                        Live Demo
-                    </Button>
+                    <div className="flex gap-1 mt-4 w-full items-start">
+                        <Button
+                            className="rounded-xl text-gray-300 hover:text-white text-sm bg-[#161412] hover:bg-[#161412]"
+                            onClick={() => window.open(githubLink, "_blank")}
+                        >
+                            DEVELOPMENT
+                        </Button>
+                        <Button
+                            className="rounded-xl bg-gray-800 hover:bg-gray-600 text-white  text-sm"
+                            onClick={() => window.open(liveLink, "_blank")}
+                        >
+                            {year}
+                        </Button>
+                    </div>
                 </div>
-            </div>
 
             {/* Second: Image */}
             <BlobMedia type="image" src={imageSrc} githubLink={githubLink} />

@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MotionA, MotionSpan } from "@/lib/motion";
 
-
 const MenuItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
     <MotionA
         href={href}
@@ -44,10 +43,20 @@ export default function Header() {
     useEffect(() => {
         const original = document.body.style.overflow;
         document.body.style.overflow = open ? "hidden" : original || "";
-        return () => { document.body.style.overflow = original; };
+        return () => {
+            document.body.style.overflow = original;
+        };
     }, [open]);
 
-    const navItems = ["About", "Projects", "Education", "Skills", "Contact"];
+    // 🔥 Updated navItems with full hrefs
+    const navItems = [
+        { name: "About", href: "/#about" },
+        { name: "Projects", href: "/#projects" },
+        { name: "Education", href: "/#education" },
+        { name: "Skills", href: "/#skills" },
+        { name: "Blogs", href: "/blogs" },
+        { name: "Contact", href: "/#contact" },
+    ];
 
     return (
         <header className="absolute top-0 left-0 w-full p-5 flex justify-between items-center z-[1000]">
@@ -63,11 +72,8 @@ export default function Header() {
             <nav className="hidden md:flex">
                 <ul className="flex space-x-4">
                     {navItems.map((item) => (
-                        <MenuItem
-                            key={item}
-                            href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-                        >
-                            {item}
+                        <MenuItem key={item.name} href={item.href}>
+                            {item.name}
                         </MenuItem>
                     ))}
                 </ul>
@@ -79,8 +85,14 @@ export default function Header() {
                     onClick={() => setOpen(true)}
                     className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center space-y-1 z-[10000]"
                 >
-                    <motion.span animate={{ rotate: 0, y: 0 }} className="w-6 h-0.5 bg-white rounded" />
-                    <motion.span animate={{ opacity: 1 }} className="w-6 h-0.5 bg-white rounded" />
+                    <motion.span
+                        animate={{ rotate: 0, y: 0 }}
+                        className="w-6 h-0.5 bg-white rounded"
+                    />
+                    <motion.span
+                        animate={{ opacity: 1 }}
+                        className="w-6 h-0.5 bg-white rounded"
+                    />
                 </button>
             )}
 
@@ -88,7 +100,7 @@ export default function Header() {
             <AnimatePresence>
                 {open && (
                     <motion.div
-                        className="fixed inset-0 z-[10000]"    // absolute top of the world
+                        className="fixed inset-0 z-[10000]" // absolute top of the world
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -105,24 +117,32 @@ export default function Header() {
                                 onClick={() => setOpen(false)}
                                 className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center"
                             >
-                                <motion.span initial={{ rotate: 0 }} animate={{ rotate: 45 }} className="absolute w-6 h-0.5 bg-white rounded" />
-                                <motion.span initial={{ rotate: 0 }} animate={{ rotate: -45 }} className="absolute w-6 h-0.5 bg-white rounded" />
+                                <motion.span
+                                    initial={{ rotate: 0 }}
+                                    animate={{ rotate: 45 }}
+                                    className="absolute w-6 h-0.5 bg-white rounded"
+                                />
+                                <motion.span
+                                    initial={{ rotate: 0 }}
+                                    animate={{ rotate: -45 }}
+                                    className="absolute w-6 h-0.5 bg-white rounded"
+                                />
                             </button>
 
                             {/* Menu Items */}
                             {navItems.map((item, i) => (
                                 <motion.div
-                                    key={item}
+                                    key={item.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 * i, duration: 0.4 }}
                                 >
                                     <Link
-                                        href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                                        href={item.href}
                                         className="text-2xl font-semibold text-white tracking-wide relative group"
                                         onClick={() => setOpen(false)}
                                     >
-                                        {item}
+                                        {item.name}
                                         <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 transition-all duration-500 group-hover:w-full"></span>
                                     </Link>
                                 </motion.div>

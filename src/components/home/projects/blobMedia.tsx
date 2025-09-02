@@ -1,6 +1,7 @@
 import { MotionDiv, MotionImg } from "@/lib/motion";
 import { AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const BlobMedia = ({
     type = "image",
@@ -14,6 +15,7 @@ const BlobMedia = ({
     githubLink?: string;
 }) => {
     const [hovered, setHovered] = useState(false);
+    const [loading, setLoading] = useState(true);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const mouseX = useMotionValue(0);
@@ -40,26 +42,30 @@ const BlobMedia = ({
     return (
         <div
             ref={containerRef}
-            className="relative w-full md:w-1/3 h-48 md:h-64 rounded-xl overflow-hidden group cursor-pointer"
+            className="relative w-full md:w-1/3 h-80 md:h-100 rounded-xl overflow-hidden group cursor-pointer"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onMouseMove={handleMouseMove}
             onClick={handleClick}
         >
+            {loading && <Skeleton className="w-full h-full rounded-xl" />}
+
             {type === "video" ? (
                 <video
                     src={src}
-                    className="w-full h-full object-cover rounded-xl"
+                    className={`w-full h-full object-cover rounded-xl ${loading ? "hidden" : "block"}`}
                     autoPlay
                     muted
                     loop
+                    onLoadedData={() => setLoading(false)}
                 />
             ) : (
                 <MotionImg
                     src={src}
-                    className="w-full h-full object-cover rounded-xl"
+                    className={`w-full h-full object-cover rounded-xl ${loading ? "hidden" : "block"}`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 200 }}
+                    onLoad={() => setLoading(false)}
                 />
             )}
 
@@ -82,7 +88,6 @@ const BlobMedia = ({
                     </MotionDiv>
                 )}
             </AnimatePresence>
-
         </div>
     );
 };

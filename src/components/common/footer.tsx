@@ -51,7 +51,7 @@ const Footer = () => {
                         <li><a href="#projects" className="hover:underline"><ShuffleText text="Projects" /></a></li>
                         <li><a href="#skills" className="hover:underline"><ShuffleText text="Skills" /></a></li>
                         <li><a href="#contact" className="hover:underline"><ShuffleText text="Contact" /></a></li>
-                        <li><a href="/blog" className="hover:underline"><ShuffleText text="Blog" /></a></li>
+                        <li><a href="/blogs" className="hover:underline"><ShuffleText text="Blog" /></a></li>
                     </ul>
 
                 </MotionDiv>

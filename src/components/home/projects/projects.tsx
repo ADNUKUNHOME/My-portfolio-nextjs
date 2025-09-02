@@ -9,7 +9,7 @@ import { MotionDiv } from "@/lib/motion";
 const Projects = () => {
     return (
         <MotionDiv
-            className="flex flex-col gap-10 w-full max-w-5xl"
+            className="flex flex-col gap-10 w-full p-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -17,7 +17,7 @@ const Projects = () => {
         >
             <div className="flex flex-col items-center gap-3">
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-300">
-                    Projects
+                    WHAT I HAVE DONE/
                 </h2>
                 <Separator className="w-24 bg-gray-500" />
                 <p className="text-gray-400 text-sm md:text-base max-w-xl text-center">
@@ -39,6 +39,7 @@ const Projects = () => {
                         imageSrc={p.imageSrc}
                         liveLink={p.liveLink}
                         githubLink={p.githubLink}
+                        year={p.year}
                     />
                 ))}
             </div>
