@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MotionA, MotionSpan } from "@/lib/motion";
@@ -62,7 +63,13 @@ export default function Header() {
         <header className="absolute top-0 left-0 w-full p-5 flex justify-between items-center z-[1000]">
             {/* Logo + Title */}
             <Link href="/" className="flex items-center">
-                <img src="/logo.png" alt="Logo" className="h-15 w-15 md:h-20 md:w-20" />
+                <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={80}
+                    height={80}
+                    className="h-15 w-15 md:h-20 md:w-20"
+                />
                 <span className="text-white text-lg md:text-xl font-bold">
                     MERN & Next.js Developer
                 </span>

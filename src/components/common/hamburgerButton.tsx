@@ -1,5 +1,5 @@
 import { MotionButton, MotionDiv, MotionSpan } from "@/lib/motion";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 type MenuButtonProps = {

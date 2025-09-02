@@ -27,6 +27,15 @@ import {
     SiOpenai,
     SiGooglecloud,
 } from "react-icons/si";
+import { IconType } from "react-icons";
+
+
+
+interface SkillTileProps {
+  Icon: IconType;
+  name: string;
+  color: string;
+}
 
 const logos = [
     { icon: SiJavascript, color: "#f7df1e", name: "JavaScript" },
@@ -56,7 +65,7 @@ const logos = [
 ];
 
 // tile component with animated gradient border
-const SkillTile = ({ Icon, name, color }: any) => (
+const SkillTile = ({ Icon, name, color }: SkillTileProps) => (
     <motion.div
         whileHover={{ scale: 1.1 }}
         className="relative flex flex-col items-center justify-center w-28 h-28 rounded-xl p-[2px] overflow-hidden"

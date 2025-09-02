@@ -2,6 +2,7 @@ import BLOGS from "@/constants/blogs";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft } from 'lucide-react';
+import Image from "next/image";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,7 +46,7 @@ export default async function BlogDetail({ params }: Props) {
 
         {/* Blog image */}
         <div className="mt-10">
-          <img
+          <Image
             src={blog.image}
             alt={blog.title}
             className="w-full rounded-2xl shadow-lg object-cover"

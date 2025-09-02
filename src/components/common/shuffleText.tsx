@@ -7,7 +7,7 @@ const ShuffleText = ({ text }: { text: string }) => {
     useEffect(() => {
         let iteration = 0;
         const interval = setInterval(() => {
-            setDisplayed((prev) =>
+            setDisplayed((_prev) =>
                 text
                     .split("")
                     .map((char, idx) => {

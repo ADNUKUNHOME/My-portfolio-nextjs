@@ -18,7 +18,7 @@ export default function Blogs() {
   const [sort, setSort] = useState<"new" | "old">("new");
 
   const filtered = useMemo(() => {
-    let list = BLOGS.filter((b) => {
+    const list = BLOGS.filter((b) => {
       const q = query.trim().toLowerCase();
       const matchesQuery = q
         ? b.title.toLowerCase().includes(q) || b.description.toLowerCase().includes(q)

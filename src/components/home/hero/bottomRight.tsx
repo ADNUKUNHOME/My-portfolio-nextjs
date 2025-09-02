@@ -25,6 +25,7 @@ const BottomRight = () => {
             document.body.removeChild(link);
             toast.success("My Resume is downloading. Please check your downloads folder.");
         } catch (error) {
+            console.error("Failed to download resume: ", error);
             toast.error("Failed to download resume. Please try again.");
         }
     };

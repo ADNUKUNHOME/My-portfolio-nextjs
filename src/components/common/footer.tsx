@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { MotionButton, MotionDiv, MotionH1 } from "@/lib/motion";
 import { useInView } from "framer-motion";
 import ShuffleText from "./shuffleText";
+import Link from 'next/link';
 
 const Footer = () => {
     const footerRef = useRef(null);
@@ -51,7 +52,7 @@ const Footer = () => {
                         <li><a href="#projects" className="hover:underline"><ShuffleText text="Projects" /></a></li>
                         <li><a href="#skills" className="hover:underline"><ShuffleText text="Skills" /></a></li>
                         <li><a href="#contact" className="hover:underline"><ShuffleText text="Contact" /></a></li>
-                        <li><a href="/blogs" className="hover:underline"><ShuffleText text="Blog" /></a></li>
+                        <li><Link href="/blogs" className="hover:underline"><ShuffleText text="Blog" /></Link></li>
                     </ul>
 
                 </MotionDiv>

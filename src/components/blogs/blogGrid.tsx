@@ -6,10 +6,20 @@ const imgLoader = ({ src }: { src: string }) => src;
 const readingTime = (text: string) =>
   Math.max(1, Math.round(text.split(/\s+/).length / 200));
 
+type Blog = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  image: string;
+  content: string[];
+};
+
 const BlogGrid = ({
     filtered,
 }: {
-    filtered: string[];
+    filtered: Blog[];
 }) => {
   return (
         <section className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

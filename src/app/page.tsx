@@ -25,7 +25,7 @@ export default function Home() {
         const width = window.innerWidth;
         if (width < 640) setOffsets({ backend: "18vh", other: "26vh" });
         else if (width < 1024) setOffsets({ backend: "16vh", other: "32vh" });
-        else setOffsets({ backend: "17vh", other: "34vh" });
+        else setOffsets({ backend: "16vh", other: "32vh" });
       }
       updateOffsets();
       window.addEventListener("resize", updateOffsets);
@@ -185,7 +185,7 @@ export default function Home() {
       {/* Showcase (scrollable) */}
       <MotionSection
         id="showcase"
-        ref={showcaseRef as any}
+        ref={showcaseRef}
         style={{ y: showcaseTranslate }}
         className="h-screen flex flex-col justify-start items-center bg-black text-[#1f1c19] border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-60 overflow-y-auto  py-8"
       >

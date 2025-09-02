@@ -35,8 +35,9 @@ const Contact = () => {
             } else {
                 toast.error(res.message || "Failed to send your message!");
             }
-        } catch (error) {
-            toast.error("Failed Submitting your Message!")
+        } catch (err) {
+            console.error("Failed to submitting message: ", err);
+            toast.error("Failed Submitting your Message!");
         } finally {
             setLoading(false);
         }
@@ -58,7 +59,7 @@ const Contact = () => {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-6xl font-bold text-center bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-lg mb-8"
             >
-                LET'S MAKE IT HAPPEN
+                LET&apos;S MAKE IT HAPPEN
             </motion.h2>
 
             <motion.p
