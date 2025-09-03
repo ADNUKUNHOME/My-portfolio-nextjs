@@ -18,13 +18,13 @@ export default async function BlogDetail({ params }: Props) {
 
   return (
     <div className="relative bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] min-h-screen text-white overflow-hidden">
-        {/* Back button */}
-        <Link
-          href="/blogs"
-          className="absolute top-6 left-6 flex gap-2 items-center text-sm font-medium text-gray-300 hover:text-white px-4 py-2 rounded-xl shadow transition z-20"
-        >
-          <ChevronLeft /> Back to Blogs
-        </Link>
+      {/* Back button */}
+      <Link
+        href="/blogs"
+        className="absolute top-6 left-6 flex gap-2 items-center text-sm font-medium text-gray-300 hover:text-white px-4 py-2 rounded-xl shadow transition z-20"
+      >
+        <ChevronLeft /> Back to Blogs
+      </Link>
       {/* Animated blob background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full blur-3xl opacity-30 animate-blob" />
@@ -45,11 +45,13 @@ export default async function BlogDetail({ params }: Props) {
         </div>
 
         {/* Blog image */}
-        <div className="mt-10">
+        <div className="mt-10 w-full max-h-xl">
           <Image
             src={blog.image}
             alt={blog.title}
-            className="w-full rounded-2xl shadow-lg object-cover"
+            width={800}
+            height={500}
+            className="rounded-2xl shadow-lg object-cover"
           />
         </div>
 

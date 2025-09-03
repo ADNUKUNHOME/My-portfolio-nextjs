@@ -6,6 +6,7 @@ import Education from "../education/education";
 import Projects from "../projects/projects";
 import AllSkills from "../skills/allSkills/allSkills";
 import AnimatedSkills from "../skills/allSkills/animatedSkills";
+import LatestBlog from "../latestBlog";
 
 const ShowscaseSections = () => {
 
@@ -21,6 +22,8 @@ const ShowscaseSections = () => {
                 <AllSkills />
             </section>
             <AnimatedSkills />
+
+            <LatestBlog />
 
             <section id="contact" className="w-full">
                 <Contact />

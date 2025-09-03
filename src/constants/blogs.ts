@@ -1,5 +1,53 @@
 const BLOGS = [
   {
+    slug: "night-shifts-and-code",
+    title: "Night Shifts & Late-Night Code: Becoming a Full-Stack Dev After Work",
+    description:
+      "Working full-time in a shop and coding 2–3 hours after 10PM — how I balanced shifts, sleepiness, and a burning passion to become a full-stack developer without formal certificates.",
+    date: "2025-09-03",
+    tags: ["Self-Learning", "MERN", "Night-Shift", "Motivation"],
+    image:
+      "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "I work a full day — bakery or textiles, depending on the week — and most evenings I’m wiped out. Still, after 10PM, I open my laptop and code for two or three hours. It’s not a glamorous routine: tired eyes, a small desk light, coffee or chai late at night. But that routine kept me moving. My interest wasn’t casual; it was a deep, burning pull to become a full-stack developer.",
+      "I don’t have certificates from fancy bootcamps. I couldn’t attend courses because of my situation. That’s why I enrolled in IGNOU for a BCA in 2025 — to get a proper degree while I continue learning the stack on my own. Balancing work, studies, and late-night coding is hard, but every small win (a working API, a polished component, a deployed demo) felt like proof that the grind was worth it.",
+      "Those late hours taught me two things: consistency beats intensity, and direction beats randomness. I learned to plan small goals for each night — one bug, one UI tweak, one new concept — and slowly my projects began looking and feeling like real work. I focused on building things people can use, not just exercises on a tutorial.",
+      "I still hope for a team where I can contribute and grow. I’m building the skills now so that when the chance comes, I can give everything to a product and a group that believes in practical, user-first code."
+    ]
+  },
+  {
+    slug: "diploma-to-determination",
+    title: "Diploma Dropped, Determination Kept: Choosing Self-Learning",
+    description:
+      "I started a polytechnic diploma in computer engineering but had to quit. That setback pushed me toward self-learning — 2–3 hours daily after work — and a new map to become a software engineer.",
+    date: "2025-09-03",
+    tags: ["Education", "Determination", "Career", "Self-Learning"],
+    image:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "After finishing my plus-two in 2023, I enrolled in a polytechnic diploma in computer engineering. I was excited — the idea of becoming a software engineer felt alive in me. But life made a different plan: after the first semester I had to quit because of circumstances I couldn’t control. It felt like a door closing.",
+      "Instead of letting that end my story, I decided to find another way. I saw many people in the industry who learned on their own, built solid projects, and earned jobs without following the traditional route. That gave me hope. I committed to learning by myself: two to three hours every day after my full-time shifts, practicing fundamentals, making tiny projects, and learning to ship.",
+      "The discipline mattered more than talent. While others attended classes, I turned late nights into lessons: reading docs, watching tutorials, copying then improving examples, and slowly building a portfolio. My focus became user-centric projects — things that solve small problems and teach real-world engineering.",
+      "Quitting the diploma didn’t stop me — it made me more determined. If you’re in the same place, don’t think of the dropout as failure. Treat it as a detour that taught you to steer your own path."
+    ]
+  },
+  {
+    slug: "replit-on-phone-to-first-laptop",
+    title: "From Replit on My Phone to My First Laptop: How Projects Began",
+    description:
+      "I learned HTML, CSS and JavaScript on my phone using Replit for months. When I finally got an old laptop, everything changed — small projects became real and the momentum started.",
+    date: "2025-09-03",
+    tags: ["Beginners", "Projects", "Replit", "Journey"],
+    image:
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "At first I didn’t even have a laptop. I learned the basics — HTML, CSS, and JavaScript — on my mobile phone using Replit. It wasn’t ideal: typing on a small screen, limited file structure, and no local server for more advanced experiments. Still, for three months (June, July, August), I built small exercises and learned how things fit together. I learned to be patient and creative with limited tools.",
+      "Those months taught me the value of persistence. Replit gave me just enough to understand how to structure pages and make things interactive, but I desperately wanted to build full projects. The turning point came in September when I finally got an old laptop. It wasn’t new, but it was a doorway.",
+      "With a laptop I could run local dev environments, push to GitHub, and deploy. I started small — clones of tutorials, then tiny original projects, then a portfolio. Seeing a project live on the web for the first time hit me hard: the feeling of creating something real is addicting in the best way.",
+      "Now I’m excited again and always learning. From a phone screen to a full setup, the journey has been slow but honest. If you’re starting with limited tools, know this: you can still make real progress. Small, steady work adds up — and a single working project can open many doors."
+    ]
+  },
+  {
     slug: "mern-ecommerce-journey",
     title: "My First MERN E-commerce Journey",
     description:
