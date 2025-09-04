@@ -1,27 +1,32 @@
-import { MotionDiv, MotionImg } from "@/lib/motion";
+import { MotionDiv } from "@/lib/motion";
 import { AnimatePresence, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { useRef, useState, useEffect, useMemo } from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage, placeholder, responsive } from "@cloudinary/react";
+import { scale } from "@cloudinary/url-gen/actions/resize";
+import { AdvancedVideo } from "@cloudinary/react";
+
+const cld = new Cloudinary({ cloud: { cloudName: "dr7niljpd" } });
 
 const BlobMedia = ({
     type = "image",
     src,
     liveLink,
     githubLink,
+    videoPoster,
 }: {
     type?: "image" | "video";
     src?: string;
     liveLink?: string;
     githubLink?: string;
+    videoPoster?: string;
 }) => {
     const [hovered, setHovered] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [isLight, setIsLight] = useState(true); // for blob color decision
+    const [hasBeenInView, setHasBeenInView] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-
     const springX = useSpring(mouseX, { stiffness: 300, damping: 20 });
     const springY = useSpring(mouseY, { stiffness: 300, damping: 20 });
 
@@ -40,63 +45,44 @@ const BlobMedia = ({
         }
     };
 
-    // brightness calculation helper
-    const calculateBrightness = (el: HTMLImageElement | HTMLVideoElement) => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        canvas.width = 50;
-        canvas.height = 50;
-        ctx.drawImage(el, 0, 0, 50, 50);
-        const data = ctx.getImageData(0, 0, 50, 50).data;
-
-        let r = 0, g = 0, b = 0;
-        for (let i = 0; i < data.length; i += 4) {
-            r += data[i];
-            g += data[i + 1];
-            b += data[i + 2];
-        }
-        const pixels = data.length / 4;
-        const avgR = r / pixels;
-        const avgG = g / pixels;
-        const avgB = b / pixels;
-
-        // luminance formula
-        const brightness = 0.299 * avgR + 0.587 * avgG + 0.114 * avgB;
-
-        setIsLight(brightness > 128); // threshold
-    };
-
-    useEffect(() => {
-        if (!src) return;
-
-        if (type === "image") {
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.src = src;
-            img.onload = () => calculateBrightness(img);
-        } else if (type === "video") {
-            const video = document.createElement("video");
-            video.crossOrigin = "anonymous";
-            video.src = src;
-            video.currentTime = 1; // pick frame
-            video.onloadeddata = () => calculateBrightness(video);
-        }
-    }, [src, type]);
-
-    const [isInView, setIsInView] = useState(false);
-
+    // observer only sets inView once
     useEffect(() => {
         if (!containerRef.current) return;
         const observer = new IntersectionObserver(
-            ([entry]) => setIsInView(entry.isIntersecting),
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setHasBeenInView(true);
+                    observer.disconnect();
+                }
+            },
             { threshold: 0.3 }
         );
         observer.observe(containerRef.current);
         return () => observer.disconnect();
     }, []);
 
+    // ✅ Memoize Cloudinary objects
+    const cldImage = useMemo(() => {
+        if (type === "image" && src) {
+            return cld
+                .image(src.split("/").pop()?.split(".")[0] || "")
+                .format("auto")
+                .quality("auto")
+                .resize(scale().width(600));
+        }
+        return null;
+    }, [src, type]);
+
+    const cldVideo = useMemo(() => {
+        if (type === "video" && src) {
+            return cld
+                .video(src.split("/").pop()?.split(".")[0] || "")
+                .format("auto")
+                .quality("auto")
+                .resize(scale().width(800));
+        }
+        return null;
+    }, [src, type]);
 
     return (
         <div
@@ -107,45 +93,36 @@ const BlobMedia = ({
             onMouseMove={handleMouseMove}
             onClick={handleClick}
         >
-            {loading && <Skeleton className="w-full h-full rounded-xl" />}
-
-            {type === "video" ? (
-                <div className="w-full h-full">
-                    {isInView && (
-                        <video
-                            src={src}
-                            className="w-full h-full object-cover rounded-xl"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            onLoadedData={() => setLoading(false)}
-                        />
-                    )}
-                </div>
-            ) : (
-                <MotionImg
-                    src={src}
-                    loading="lazy"
-                    className={`w-full h-full object-cover rounded-xl ${loading ? "hidden" : "block"}`}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                    onLoad={() => setLoading(false)}
+            {/* Media stays mounted, never blinks */}
+            {type === "image" && cldImage && (
+                <AdvancedImage
+                    cldImg={cldImage}
+                    plugins={[responsive(), placeholder({ mode: "blur" })]}
+                    className="w-full h-full object-cover rounded-xl"
                 />
             )}
 
-            {/* Blob */}
+            {type === "video" && cldVideo && hasBeenInView && (
+                <AdvancedVideo
+                    cldVid={cldVideo}
+                    className="w-full h-full object-cover rounded-xl"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={videoPoster}
+                />
+            )}
+
+            {/* Blob layer - fixed black glass bg */}
             <AnimatePresence>
                 {hovered && (
                     <MotionDiv
                         key="blob"
-                        className={`absolute w-20 h-20 rounded-full flex items-center justify-center 
-                            text-sm font-semibold pointer-events-none 
-                            backdrop-blur-lg border 
-                            ${isLight
-                                ? "bg-black/40 text-white border-black/30"
-                                : "bg-white/40 text-black border-white/30"
-                            }`}
+                        className="absolute w-20 h-20 rounded-full flex items-center justify-center 
+              text-sm font-semibold pointer-events-none 
+              backdrop-blur-lg bg-black/40 text-white border border-black/30"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}

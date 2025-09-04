@@ -106,6 +106,7 @@ const Contact = () => {
                     ></textarea>
                     <Button
                         type="submit"
+                        disabled={loading}
                         className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-semibold shadow-lg hover:opacity-90 transition"
                     >
                         {loading ? <><Loader2 className="animate-spin mr-2" />Sending Your Message...</> : "Send Message"}

@@ -11,6 +11,7 @@ import OtherTools from "@/components/home/skills/otherTools/otherTools";
 import ShowscaseSections from "@/components/home/showcaseSections/showcaseSections";
 import MenuButton from "@/components/common/hamburgerButton";
 import { MotionDiv, MotionSection } from "@/lib/motion";
+import Intro from "@/components/common/intro";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -132,6 +133,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative h-[600vh]">
+      <Intro />
       {/* Hero */}
       <MotionSection
         style={{ opacity: heroOpacity, y: heroTranslate }}

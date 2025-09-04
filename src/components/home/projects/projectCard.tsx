@@ -38,7 +38,7 @@ const ProjectCard = ({
             className="flex flex-col md:flex-row gap-6 rounded-2xl bg-[#2a2622] border border-gray-700 shadow-lg"
         >
             {/* First: Video */}
-            <BlobMedia type="video" src={videoSrc} liveLink={liveLink} />
+            <BlobMedia type="video" src={videoSrc} liveLink={liveLink} videoPoster="/fallback.jpg" />
 
             {/* Text */}
             <div className="flex flex-col justify-cneter items-center gap-5 m-6 flex-1">
@@ -58,21 +58,21 @@ const ProjectCard = ({
                 </div>
 
                 {/* Buttons */}
-                    <div className="flex gap-1 mt-4 w-full items-start">
-                        <Button
-                            className="rounded-xl text-gray-300 hover:text-white text-sm bg-[#161412] hover:bg-[#161412]"
-                            onClick={() => window.open(githubLink, "_blank")}
-                        >
-                            DEVELOPMENT
-                        </Button>
-                        <Button
-                            className="rounded-xl bg-gray-800 hover:bg-gray-600 text-white  text-sm"
-                            onClick={() => window.open(liveLink, "_blank")}
-                        >
-                            {year}
-                        </Button>
-                    </div>
+                <div className="flex gap-1 mt-4 w-full items-start">
+                    <Button
+                        className="rounded-xl text-gray-300 hover:text-white text-sm bg-[#161412] hover:bg-[#161412]"
+                        onClick={() => window.open(githubLink, "_blank")}
+                    >
+                        DEVELOPMENT
+                    </Button>
+                    <Button
+                        className="rounded-xl bg-gray-800 hover:bg-gray-600 text-white  text-sm"
+                        onClick={() => window.open(liveLink, "_blank")}
+                    >
+                        {year}
+                    </Button>
                 </div>
+            </div>
 
             {/* Second: Image */}
             <BlobMedia type="image" src={imageSrc} githubLink={githubLink} />

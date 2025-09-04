@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MotionA, MotionSpan } from "@/lib/motion";
+import { MotionA, MotionButton, MotionDiv, MotionSpan } from "@/lib/motion";
 
 const MenuItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
     <MotionA
@@ -106,39 +106,43 @@ export default function Header() {
             {/* Mobile Menu Sheet – separate wrapper guarantees top-most layer */}
             <AnimatePresence>
                 {open && (
-                    <motion.div
+                    <MotionDiv
                         className="fixed inset-0 z-[10000]" // absolute top of the world
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        <motion.div
+                        <MotionDiv
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="absolute top-0 right-0 w-full h-full bg-black/70 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8"
+                            className="absolute top-0 right-0 w-full h-full bg-linear-to-r from-white/20 via-black/70 to-white/20 backdrop-blur-2xl flex flex-col items-start justify-center pl-8 space-y-4"
                         >
                             {/* Cancel Button */}
-                            <button
+                            <div className="w-100 h-100 absolute -top-30 -right-30 bg-white/30 rounded-full" />
+                            <div className="w-100 h-100 absolute -top-20 -right-30 bg-white/10 rounded-full" />
+                            <MotionButton
+                                whileHover={{ rotate: 180 }}
+                                transition={{ duration: 0.5 }}
                                 onClick={() => setOpen(false)}
-                                className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center"
+                                className="absolute top-6 right-6 w-15 h-15 rounded-full bg-white hover:bg-white flex items-center justify-center"
                             >
-                                <motion.span
+                                <MotionSpan
                                     initial={{ rotate: 0 }}
                                     animate={{ rotate: 45 }}
-                                    className="absolute w-6 h-0.5 bg-white rounded"
+                                    className="absolute w-7 h-0.5 bg-black rounded"
                                 />
-                                <motion.span
+                                <MotionSpan
                                     initial={{ rotate: 0 }}
                                     animate={{ rotate: -45 }}
-                                    className="absolute w-6 h-0.5 bg-white rounded"
+                                    className="absolute w-7 h-0.5 bg-black rounded"
                                 />
-                            </button>
+                            </MotionButton>
 
                             {/* Menu Items */}
                             {navItems.map((item, i) => (
-                                <motion.div
+                                <MotionDiv
                                     key={item.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -146,16 +150,16 @@ export default function Header() {
                                 >
                                     <Link
                                         href={item.href}
-                                        className="text-2xl font-semibold text-white tracking-wide relative group"
+                                        className="text-3xl font-bold text-gray-300 tracking-tighter relative group"
                                         onClick={() => setOpen(false)}
                                     >
                                         {item.name}
                                         <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 transition-all duration-500 group-hover:w-full"></span>
                                     </Link>
-                                </motion.div>
+                                </MotionDiv>
                             ))}
-                        </motion.div>
-                    </motion.div>
+                        </MotionDiv>
+                    </MotionDiv>
                 )}
             </AnimatePresence>
         </header>
