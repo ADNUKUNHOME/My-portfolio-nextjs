@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 My Portfolio – MUHAMMAD ADNAN K
 
-## Getting Started
+Welcome to my **personal portfolio website**, built with modern web technologies to showcase my **skills, projects, and experiences** as a Full Stack Developer. 🚀  
 
-First, run the development server:
+---  
 
+## ✨ Features  
+
+- 🎨 Clean & minimal UI with responsive design  
+- ⚡ Built with **Next.js** for fast performance  
+- 📱 Fully responsive across devices  
+- 📝 Dedicated **Blog Section** to share learnings  
+- 💼 **Projects Showcase** with live links & details  
+- 📧 Contact form for easy reach-out  
+
+---  
+
+## 🛠️ Tech Stack  
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" />
+  <img src="https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=radix-ui&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-EF008F?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</p>  
+
+---  
+
+## 🚀 Getting Started  
+
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/ADNUKUNHOME/My-portfolio-nextjs.git
+cd My-portfolio-nextjs
+```
+
+### 2️⃣ Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3️⃣ Run development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+Now open http://localhost:3000 to view it in your browser.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌍 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployed on Vercel for best performance.
+🔗 [Live Demo](https://muhammadadnank.vercel.app)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📬 Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 👨‍💻 MUHAMMAD ADNAN K 
 
-## Deploy on Vercel
+Portfolio: [https://muhammadadnank.vercel.app](https://muhammadadnank.vercel.app)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/muhammad-adnan-a479052a1)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Email: adnukunhome7@gmail.com
+
+
+
+---
+
+## ⭐ If you like this project, don’t forget to give it a star! ⭐
+
+---
