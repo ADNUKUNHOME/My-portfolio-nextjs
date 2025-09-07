@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
 import { SkillCategories } from "@/constants/mySKills";
 import * as Si from "react-icons/si";
 import { IconType } from "react-icons";
+import { MotionDiv, MotionH1, MotionH3 } from "@/lib/motion";
 
 // Animation Variants
 const container = {
@@ -63,19 +63,19 @@ const AllSkills = () => {
     return (
         <section className="w-full max-w-5xl mx-auto px-6 py-20 text-white">
             {/* Heading */}
-            <motion.h2
+            <MotionH1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="text-center text-4xl md:text-5xl text-orange-50 lg:text-6xl font-extrabold tracking-tight"
             >
                 MY TECH STACK/
-            </motion.h2>
+            </MotionH1>
             <Separator className="w-20 mx-auto bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 my-10 rounded-full" />
 
             <div className="space-y-14">
                 {SkillCategories.map((category) => (
-                    <motion.div
+                    <MotionDiv
                         key={category.title}
                         initial="hidden"
                         whileInView="visible"
@@ -83,14 +83,14 @@ const AllSkills = () => {
                         viewport={{ once: true }}
                     >
                         {/* Category Title */}
-                        <motion.h3
+                        <MotionH3
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                             className="text-lg md:text-xl font-semibold text-center mb-6 bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent"
                         >
                             {category.title}
-                        </motion.h3>
+                        </MotionH3>
 
                         {/* Skills Grid */}
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
@@ -102,9 +102,10 @@ const AllSkills = () => {
                                     const color = skillData?.color || "#ffffff";
 
                                     return (
-                                        <motion.div
+                                        <MotionDiv
                                             key={skill}
                                             variants={item}
+                                            whileTap={{ scale: 1.05 }}
                                             whileHover={{
                                                 scale: 1.07,
                                                 rotate: 1,
@@ -120,11 +121,11 @@ const AllSkills = () => {
                                             <span className="mt-2 text-xs md:text-sm font-medium text-gray-200 text-center">
                                                 {skill}
                                             </span>
-                                        </motion.div>
+                                        </MotionDiv>
                                     );
                                 })}
                         </div>
-                    </motion.div>
+                    </MotionDiv>
                 ))}
             </div>
         </section>

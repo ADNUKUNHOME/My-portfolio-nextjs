@@ -1,6 +1,6 @@
 "use client";
 
-import { FaGithub, FaInstagram, FaLinkedin, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaArrowUp, FaPhoneAlt } from "react-icons/fa";
 import { Mail } from "lucide-react";
 import { useRef } from "react";
 import { MotionButton, MotionDiv, MotionH1 } from "@/lib/motion";
@@ -38,7 +38,42 @@ const Footer = () => {
                     <p className="mt-2 text-sm opacity-80">
                         Full Stack Developer | MERN | Next.js | Tailwind
                     </p>
+
+                    {/* Contact Info */}
+                    <div className="mt-4 space-y-2 text-sm opacity-80">
+                        <div className="flex items-center gap-2">
+                            <FaPhoneAlt className="text-white/80 text-base" />
+                            <a href="tel:+917902917304" className="hover:underline">
+                                +91 79029 17304
+                            </a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Mail className="text-white/80 w-4 h-4" />
+                            <a href="mailto:adnukunhome7@gmail.com" className="hover:underline">
+                                adnukunhome7@gmail.com
+                            </a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-4 w-4 text-white/80"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z"
+                                />
+                                <circle cx="12" cy="9" r="2.5" fill="currentColor" />
+                            </svg>
+                            <span>India</span>
+                        </div>
+                    </div>
                 </MotionDiv>
+
 
                 {/* Navigation */}
                 <MotionDiv
@@ -50,6 +85,7 @@ const Footer = () => {
                     <ul className="space-y-2 opacity-90">
                         <li><a href="#about" className="hover:underline"><ShuffleText text="About" /></a></li>
                         <li><a href="#projects" className="hover:underline"><ShuffleText text="Projects" /></a></li>
+                        <li><a href="#education" className="hover:underline"><ShuffleText text="Education" /></a></li>
                         <li><a href="#skills" className="hover:underline"><ShuffleText text="Skills" /></a></li>
                         <li><a href="#contact" className="hover:underline"><ShuffleText text="Contact" /></a></li>
                         <li><Link href="/blogs" className="hover:underline"><ShuffleText text="Blog" /></Link></li>

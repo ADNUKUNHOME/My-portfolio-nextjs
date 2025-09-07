@@ -87,7 +87,7 @@ export default function Home() {
 
     const rect = el.getBoundingClientRect();
     const containerTop = window.scrollY + rect.top;
-    const scrollable = rect.height - window.innerHeight; // ≈ 500vh for 600vh container
+    const scrollable = rect.height - window.innerHeight;
     const clamped = Math.max(0, Math.min(1, progress));
     const target = containerTop + clamped * scrollable;
 
@@ -106,7 +106,7 @@ export default function Home() {
         return;
       }
       if (raw === "about") {
-        scrollOuterToProgress(step); // bring About fully into place
+        scrollOuterToProgress(step);
         return;
       }
 

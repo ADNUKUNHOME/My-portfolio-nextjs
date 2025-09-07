@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
     SiJavascript,
     SiTypescript,
@@ -28,13 +27,14 @@ import {
     SiGooglecloud,
 } from "react-icons/si";
 import { IconType } from "react-icons";
+import { MotionDiv } from "@/lib/motion";
 
 
 
 interface SkillTileProps {
-  Icon: IconType;
-  name: string;
-  color: string;
+    Icon: IconType;
+    name: string;
+    color: string;
 }
 
 const logos = [
@@ -66,12 +66,13 @@ const logos = [
 
 // tile component with animated gradient border
 const SkillTile = ({ Icon, name, color }: SkillTileProps) => (
-    <motion.div
+    <MotionDiv
         whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 1.05 }}
         className="relative flex flex-col items-center justify-center w-28 h-28 rounded-xl p-[2px] overflow-hidden"
     >
         {/* animated border */}
-        <motion.div
+        <MotionDiv
             className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
             animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -92,14 +93,14 @@ const SkillTile = ({ Icon, name, color }: SkillTileProps) => (
                 {name}
             </span>
         </div>
-    </motion.div>
+    </MotionDiv>
 );
 
 // seamless infinite row
 const LogoRow = ({ reverse = false }: { reverse?: boolean }) => {
     const row = [...logos, ...logos, ...logos]; // tripled for continuous scroll
     return (
-        <motion.div
+        <MotionDiv
             className="flex gap-6 min-w-max"
             animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
             transition={{
@@ -116,7 +117,7 @@ const LogoRow = ({ reverse = false }: { reverse?: boolean }) => {
                     color={item.color}
                 />
             ))}
-        </motion.div>
+        </MotionDiv>
     );
 };
 

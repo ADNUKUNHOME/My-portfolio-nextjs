@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { MotionDiv } from "@/lib/motion";
 
 const timeline = [
     {
@@ -24,7 +24,7 @@ export default function Education() {
     return (
         <section className="w-full py-20 px-4 md:px-10 lg:px-20 text-white">
             {/* Header */}
-            <motion.div
+            <MotionDiv
                 initial={{ opacity: 0, y: -30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
@@ -38,19 +38,19 @@ export default function Education() {
                     My academic journey blends formal education with self-driven learning,
                     combining structured study and hands-on projects to grow as a full-stack developer.
                 </p>
-            </motion.div>
+            </MotionDiv>
 
             {/* Modern Cards */}
             <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {timeline.map((item, i) => (
-                    <motion.div
+                    <MotionDiv
                         key={i}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: i * 0.15 }}
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 1.2 }}
+                        whileTap={{ scale: 1.05 }}
                         className="relative rounded-2xl p-[1px] animate-gradient-border bg-[length:200%_200%] 
                         bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500
                         hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-300"
@@ -68,7 +68,7 @@ export default function Education() {
                                 {item.period}
                             </p>
                         </div>
-                    </motion.div>
+                    </MotionDiv>
                 ))}
             </div>
         </section>

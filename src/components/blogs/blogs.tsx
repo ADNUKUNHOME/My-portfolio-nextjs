@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
 import Header from "../../components/home/hero/header";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import BLOGS from '../../constants/blogs';
 import GradientBlob from './gradientBlob';
 import BlogGrid from './blogGrid';
+import { MotionSection } from "@/lib/motion";
 
 
 const ALLOWED_TAGS = ["All", "Next.js", "MERN", "E-commerce", "TailwindCSS", "AI"];
@@ -42,12 +42,12 @@ export default function Blogs() {
   return (
     <div className="w-full min-h-screen bg-black text-white relative overflow-hidden">
       {/* Animated Gradient Blobs */}
-    <GradientBlob />
+      <GradientBlob />
       <Header />
 
       <main className="max-w-6xl mx-auto px-6 pb-24 pt-28 relative z-10">
         {/* Hero */}
-        <motion.section
+        <MotionSection
           initial={{ opacity: 0, y: -24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -62,10 +62,10 @@ export default function Blogs() {
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
             Notes from building MERN apps, shipping Next.js portfolios, and experimenting with AI assistants.
           </p>
-        </motion.section>
+        </MotionSection>
 
         {/* Controls */}
-        <motion.section
+        <MotionSection
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -97,17 +97,16 @@ export default function Blogs() {
               <button
                 key={t}
                 onClick={() => setActiveTag(t)}
-                className={`px-3 py-1 rounded-full border transition ${
-                  activeTag === t
+                className={`px-3 py-1 rounded-full border transition ${activeTag === t
                     ? "bg-blue-600/30 border-blue-400 text-blue-200"
                     : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10"
-                }`}
+                  }`}
               >
                 {t}
               </button>
             ))}
           </div>
-        </motion.section>
+        </MotionSection>
 
         {/* Grid */}
         <BlogGrid filtered={filtered} />

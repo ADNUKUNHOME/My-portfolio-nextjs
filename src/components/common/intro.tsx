@@ -1,19 +1,18 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { MotionDiv, MotionH1, MotionSpan } from "@/lib/motion";
+import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Intro() {
-    const [status, setStatus] = useState<"show" | "done">("show"); // start by showing
+    const [status, setStatus] = useState<"show" | "done">("show");
 
     useEffect(() => {
         const alreadyShown = sessionStorage.getItem("introShow");
 
         if (alreadyShown) {
-            // immediately skip if seen before
             setStatus("done");
         } else {
-            // let it play once
             const timer = setTimeout(() => {
                 setStatus("done");
                 sessionStorage.setItem("introShow", "true");
@@ -23,12 +22,12 @@ export default function Intro() {
         }
     }, []);
 
-    const letters = "MUHAMMAD ADNAN K".split("");
+    const letters = "MUHAMMAD ADNAN".split("");
 
     return (
         <AnimatePresence>
             {status === "show" && (
-                <motion.div
+                <MotionDiv
                     key="intro"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -36,7 +35,7 @@ export default function Intro() {
                     className="fixed inset-0 z-[2000] flex items-center justify-center bg-gradient-to-b from-black via-[#0a0a0a] to-black"
                 >
                     {/* Glow background */}
-                    <motion.div
+                    <MotionDiv
                         initial={{ scale: 0, opacity: 0.5 }}
                         animate={{ scale: [0, 1.5, 1], opacity: [0.5, 0.2, 0] }}
                         transition={{ duration: 3, ease: "easeInOut" }}
@@ -44,38 +43,43 @@ export default function Intro() {
                     />
 
                     {/* Name animation */}
-                    <motion.h1
+                    <MotionH1
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 1.3, opacity: 0 }}
                         transition={{ duration: 2, ease: "easeOut" }}
-                        className="relative flex text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-[0.25em] text-white"
+                        className="
+    relative flex flex-wrap sm:flex-nowrap
+    text-4xl sm:text-6xl md:text-7xl 
+    font-extrabold tracking-[0.25em] text-white
+    justify-center
+  "
                     >
                         {letters.map((char, i) => (
-                            <motion.span
+                            <MotionSpan
                                 key={i}
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.05, duration: 0.5 }}
                                 className={
                                     char === " "
-                                        ? "mx-2"
+                                        ? "mx-2 w-full sm:w-auto" // force line break on small screens
                                         : "inline-block bg-gradient-to-r from-[#929291] via-[#444443] to-[#707062] bg-clip-text text-transparent"
                                 }
                             >
                                 {char}
-                            </motion.span>
+                            </MotionSpan>
                         ))}
 
                         {/* Shine effect */}
-                        <motion.div
+                        <MotionDiv
                             initial={{ x: "-100%" }}
                             animate={{ x: "200%" }}
                             transition={{ duration: 2.5, ease: "easeInOut", repeat: 0 }}
                             className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
                         />
-                    </motion.h1>
-                </motion.div>
+                    </MotionH1>
+                </MotionDiv>
             )}
         </AnimatePresence>
     );

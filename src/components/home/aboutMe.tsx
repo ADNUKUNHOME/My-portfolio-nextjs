@@ -63,7 +63,7 @@ export default function AboutMe() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: card.delay }}
                         viewport={{ once: true }}
-                        whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
                         className="rounded-2xl shadow-lg p-6 bg-[#393632] text-[#e8e8e3] hover:shadow-xl transition"
                     >
                         <h3 className="text-2xl font-extrabold mb-3 uppercase">{card.title}</h3>

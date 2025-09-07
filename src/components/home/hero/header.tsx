@@ -40,7 +40,6 @@ const MenuItem = ({ href, children }: { href: string; children: React.ReactNode 
 export default function Header() {
     const [open, setOpen] = useState(false);
 
-    // lock scroll when the sheet is open (prevents awkward background scroll/clicks)
     useEffect(() => {
         const original = document.body.style.overflow;
         document.body.style.overflow = open ? "hidden" : original || "";
@@ -49,7 +48,6 @@ export default function Header() {
         };
     }, [open]);
 
-    // 🔥 Updated navItems with full hrefs
     const navItems = [
         { name: "About", href: "/#about" },
         { name: "Projects", href: "/#projects" },
@@ -103,11 +101,11 @@ export default function Header() {
                 </button>
             )}
 
-            {/* Mobile Menu Sheet – separate wrapper guarantees top-most layer */}
+            {/* Mobile Menu Sheet */}
             <AnimatePresence>
                 {open && (
                     <MotionDiv
-                        className="fixed inset-0 z-[10000]" // absolute top of the world
+                        className="fixed inset-0 z-[10000]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -151,7 +149,15 @@ export default function Header() {
                                     <Link
                                         href={item.href}
                                         className="text-3xl font-bold text-gray-300 tracking-tighter relative group"
-                                        onClick={() => setOpen(false)}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            if (item.name === "Blogs") {
+                                                window.location.href = "/blogs"
+                                            } else {
+                                                window.location.hash = item.href.replace("/", "");
+                                            }
+                                            setOpen(false);
+                                        }}
                                     >
                                         {item.name}
                                         <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 transition-all duration-500 group-hover:w-full"></span>

@@ -30,6 +30,7 @@ const LatestBlog = () => {
                 <MotionDiv
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    whileTap={{ scale: 1.05 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                     className="w-full md:w-3/4 bg-gray-800/50 rounded-2xl overflow-hidden shadow-xl hover:shadow-indigo-500/20 border border-gray-700 hover:border-indigo-400 transition"
@@ -42,6 +43,7 @@ const LatestBlog = () => {
                                 alt={latestBlog.title}
                                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                 whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 1.05 }}
                             />
                         </div>
 

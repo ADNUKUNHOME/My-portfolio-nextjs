@@ -87,12 +87,18 @@ const BlobMedia = ({
     return (
         <div
             ref={containerRef}
-            className="relative w-full md:w-1/3 h-80 md:h-100 rounded-xl overflow-hidden group cursor-pointer"
+            className="relative w-full md:w-1/3 h-80 md:h-100 rounded-xl  group cursor-pointer"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onMouseMove={handleMouseMove}
             onClick={handleClick}
         >
+
+            {
+                type === 'image' ?
+                    <div className="absolute md:hidden -top-5 text-center w-full text-gray-400 text-[12px] font-bold">Click the Image for Source Code</div>
+                    : <div className="absolute md:hidden -bottom-5 text-center w-full text-gray-400 text-[12px] font-bold">Click the video to view Live Preview</div>
+            }
             {/* Media stays mounted, never blinks */}
             {type === "image" && cldImage && (
                 <AdvancedImage

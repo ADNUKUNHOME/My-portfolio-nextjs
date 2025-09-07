@@ -76,9 +76,20 @@ const MenuButton: React.FC<MenuButtonProps> = ({ setOpen, open }) => {
                                             transition={{ delay: 0.1 * i, duration: 0.4 }}
                                         >
                                             <Link
-                                                href={item === "Home" ? "/" : item === "Blogs" ? "/blogs" :  `#${item.toLowerCase()}`}
+                                                href={item === "Home" ? "/" : item === "Blogs" ? "/blogs" : `#${item.toLowerCase()}`}
                                                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-300 tracking-tighter relative group"
-                                                onClick={() => setOpen(false)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    if (item === "Home") {
+                                                        window.scrollTo({ top: 0, behavior: "smooth" });
+                                                    } else if (item === "Blogs") {
+                                                        window.location.href = "/blogs";
+                                                    } else {
+                                                        window.location.hash = item.toLowerCase();
+                                                    }
+                                                    setOpen(false);
+                                                }}
+
                                             >
                                                 {item}
                                                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 transition-all duration-500 group-hover:w-full"></span>
