@@ -1,5 +1,16 @@
 export const MyProjects = [
   {
+    title: "Timberwise",
+    description:
+      "A private timber management system for tracking landowners, clients, timber sales, expenses, and insights. Built with Next.js and  MERN + Tailwind CSS, featuring dashboards and reporting tools. (Private project — live demo and source code unavailable.)",
+    tech: ["Next.js", "Express.js", "React", "Node.js", "Tailwind CSS", "JWT Auth"],
+    videoSrc: "https://res.cloudinary.com/dr7niljpd/video/upload/f_auto,q_auto,vc_auto,br_auto,w_800/v1758549994/InShot_20250922_185051269_pwlppl.mp4",
+    imageSrc: "https://res.cloudinary.com/dr7niljpd/image/upload/v1758558720/IMG_20250922_215834_1_stpjy9.jpg",
+    liveLink: "https://muhammadadnank.vercel.app/privatepro",
+    githubLink: "https://muhammadadnank.vercel.app/privatepro",
+    year: "2025"
+  },
+  {
     title: "NewWay",
     description:
       "AI-powered platform that creates personalized student roadmaps with skill recommendations, milestones, and project-based learning paths.",

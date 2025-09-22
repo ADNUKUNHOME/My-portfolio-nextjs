@@ -111,7 +111,7 @@ const BottomRight = () => {
                                     ? undefined
                                     : i === 0
                                         ? "https://github.com/ADNUKUNHOME"
-                                        : "https://www.linkedin.com/in/muhammad-adnan-a479052a1"
+                                        : "https://www.linkedin.com/in/muhammad-adnan-k-a479052a1"
                             }
                             onClick={isResume ? handleDownload : undefined}
                             target={isResume ? undefined : "_blank"}
