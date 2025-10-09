@@ -1,4 +1,3 @@
-// app/page.tsx (Home)
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -51,16 +50,17 @@ export default function Home() {
   const heroTranslate = useTransform(scrollYProgress, [0, step], [0, -50]);
 
   const aboutMeTranslate = useTransform(
-    scrollYProgress,
-    [0, step, 2 * step],
-    ["100vh", "0vh", "0vh"]
-  );
+  scrollYProgress,
+  [0.1 * step, 1.2 * step, 2 * step],
+  ["100vh", "0vh", "0vh"]
+);
 
-  const frontendTranslate = useTransform(
-    scrollYProgress,
-    [step, 2 * step, 3 * step],
-    ["100vh", "0vh", "0vh"]
-  );
+const frontendTranslate = useTransform(
+  scrollYProgress,
+  [1.3 * step, 2.3 * step, 3.1 * step],
+  ["100vh", "0vh", "0vh"]
+);
+
 
   const backendTranslate = useTransform(
     scrollYProgress,
@@ -137,7 +137,7 @@ export default function Home() {
       {/* Hero */}
       <MotionSection
         style={{ opacity: heroOpacity, y: heroTranslate }}
-        className="h-screen flex items-center justify-center fixed top-0 left-0 w-full bg-black z-10"
+        className="h-screen flex items-center justify-center fixed top-0 left-0 w-full will-change-transform bg-black z-10"
       >
         <Hero />
       </MotionSection>
@@ -146,7 +146,8 @@ export default function Home() {
       <MotionSection
         id="about"
         style={{ y: aboutMeTranslate }}
-        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-20"
+        transition={{ ease: "easeInOut", duration: 0.8 }}
+        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800 rounded-2xl fixed top-0 left-0 w-full will-change-transform z-20"
       >
         <AboutMe />
       </MotionSection>
@@ -163,7 +164,7 @@ export default function Home() {
       {/* Frontend */}
       <MotionSection
         style={{ y: frontendTranslate }}
-        className="h-screen flex items-center justify-center bg-[#1f1c19] text-[#e8e8e3] border border-gray-800 fixed rounded-2xl top-0 left-0 w-full z-30"
+        className="h-screen flex items-center justify-center bg-[#1f1c19] text-[#e8e8e3] border border-gray-800 fixed rounded-2xl top-0 left-0 w-full will-change-transform z-30"
       >
         <Frontend />
       </MotionSection>

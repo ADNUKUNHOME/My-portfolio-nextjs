@@ -42,7 +42,7 @@ const skillIcons: Record<string, { icon: IconType; color: string }> = {
     "NextAuth.js": { icon: Si.SiAuth0, color: "#eb5424" },
     MongoDB: { icon: Si.SiMongodb, color: "#47a248" },
     Mongoose: { icon: Si.SiMongoose, color: "#880000" },
-    "Neon (PostgreSQL)": { icon: Si.SiPostgresql, color: "#336791" },
+    PostgreSQL: { icon: Si.SiPostgresql, color: "#336791" },
     Prisma: { icon: Si.SiPrisma, color: "#2d3748" },
     "Git & GitHub": { icon: Si.SiGithub, color: "#ffffff" },
     Git: { icon: Si.SiGit, color: "#f05032" },

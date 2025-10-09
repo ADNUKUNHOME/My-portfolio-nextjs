@@ -128,7 +128,7 @@ const Contact = () => {
                     <Mail className="text-yellow-400 w-6 h-6" />
                 </a>
                 <a
-                    href="https://www.linkedin.com/in/muhammad-adnan-a479052a1"
+                    href="https://www.linkedin.com/in/muhammad-adnan-k-a479052a1"
                     target="_blank"
                     className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition"
                 >

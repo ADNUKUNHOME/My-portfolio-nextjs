@@ -3,11 +3,16 @@
 import { useMemo, useState } from "react";
 import Header from "../../components/home/hero/header";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import BLOGS from '../../constants/blogs';
 import GradientBlob from './gradientBlob';
 import BlogGrid from './blogGrid';
 import { MotionSection } from "@/lib/motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronLeft } from 'lucide-react';
+import FlowButton from "./homeButton";
 
 
 const ALLOWED_TAGS = ["All", "Next.js", "MERN", "E-commerce", "TailwindCSS", "AI"];
@@ -43,7 +48,23 @@ export default function Blogs() {
     <div className="w-full min-h-screen bg-black text-white relative overflow-hidden">
       {/* Animated Gradient Blobs */}
       <GradientBlob />
-      <Header />
+
+       <header className="absolute top-0 left-0 w-full p-5 flex justify-between items-center z-[1000]">
+            {/* Logo + Title */}
+            <Link href="/" className="flex items-center">
+                <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={80}
+                    height={80}
+                    className="h-15 w-15 md:h-20 md:w-20"
+                />
+                <span className="text-white text-lg md:text-xl font-bold">
+                    MUHAMMAD ADNAN K
+                </span>
+            </Link>
+            <FlowButton />
+        </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-24 pt-28 relative z-10">
         {/* Hero */}

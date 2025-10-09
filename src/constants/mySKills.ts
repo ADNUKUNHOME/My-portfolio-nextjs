@@ -61,7 +61,7 @@ export const SkillCategories: Category[] = [
         skills: {
             "Runtime & Frameworks": ["Node.js", "Express.js"],
             "APIs & Authentication": ["RESTful APIs", "JWT", "Clerk", "NextAuth.js"],
-            "Databases & ORM": ["MongoDB", "Mongoose", "Neon (PostgreSQL)", "Prisma"],
+            "Databases & ORM": ["MongoDB", "Mongoose", "PostgreSQL", "Prisma"],
         },
         color: "from-purple-500 to-pink-400",
     },

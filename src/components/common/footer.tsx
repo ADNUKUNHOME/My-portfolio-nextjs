@@ -104,7 +104,7 @@ const Footer = () => {
                         <a href="https://github.com/ADNUKUNHOME" target="_blank" rel="noreferrer">
                             <FaGithub className="hover:text-gray-800 transition" />
                         </a>
-                        <a href="https://www.linkedin.com/in/muhammad-adnan-a479052a1" target="_blank" rel="noreferrer">
+                        <a href="https://www.linkedin.com/in/muhammad-adnan-k-a479052a1" target="_blank" rel="noreferrer">
                             <FaLinkedin className="hover:text-blue-500 transition" />
                         </a>
                         <a href="https://www.instagram.com/adhnan.abdullah" target="_blank" rel="noreferrer">
