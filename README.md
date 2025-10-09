@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 MUHAMMAD ADNAN K — Personal Portfolio
 
-## Getting Started
+> 🚀 *“Showcasing my journey as a Full Stack Developer passionate about building modern web experiences.”*
 
-First, run the development server:
+Welcome to my **personal portfolio website** — a responsive and animated web app built with **Next.js**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, **Cloudinary**, and the **MERN stack** for backend integration.  
+It’s designed to showcase my skills, projects, and blogs — and to make connecting with me simple and professional.
+
+---
+
+## 🌍 Live Demo
+
+🔗 **[View Portfolio](https://muhammadadnank.vercel.app)**
+
+---
+
+## 🧠 Overview
+
+The portfolio highlights my work as a full stack developer and includes:
+- 🧑‍💻 **About Me** — A short introduction about who I am and my development journey.  
+- 🛠️ **Skills** — Categorized sections for frontend, backend, and other tools.  
+- 💼 **Projects** — Showcases my featured full stack and AI-based projects.  
+- ✍️ **Blog** — My personal blog section where I share insights, tutorials, and thoughts on development.  
+- 📬 **Contact** — A contact form with backend support for message submission.  
+
+Each section is designed with **smooth animations**, a **modern UI**, and optimized **SEO-friendly structure**.
+
+---
+
+## ✨ Features
+
+- ⚡ **Built with Next.js 15 + TypeScript**  
+- 🎨 **Styled using Tailwind CSS** for a clean, responsive design  
+- 🎞️ **Framer Motion animations** for smooth transitions  
+- ☁️ **Cloudinary integration** for image hosting and optimization  
+- 📩 **Contact form** with backend API integration (MERN)  
+- 🌗 **Fully responsive** — works seamlessly across all devices  
+
+---
+
+## 🧰 Tech Stack
+
+| Category | Technologies |
+|:----------|:-------------|
+| **Frontend** | Next.js 15, React, TypeScript, Tailwind CSS, Framer Motion |
+| **Backend** | Node.js, Express.js |
+| **Cloud Storage** | Cloudinary |
+| **Deployment** | Vercel (Frontend), Render/Railway (Backend) |
+
+---
+
+## ⚙️ Installation (Optional)
+
+If you’d like to run this portfolio locally:
 
 ```bash
+git clonehttps://github.com/ADNUKUNHOME/My-portfolio-nextjs.git
+cd My-portfolio-nextjs
+
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⭐ If you like this portfolio, give it a star on GitHub!
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
