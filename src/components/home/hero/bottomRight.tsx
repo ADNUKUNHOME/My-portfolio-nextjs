@@ -10,6 +10,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+// import AICTAButton from "@/components/aiChatBoat/AICTAButton";
 
 const BottomRight = () => {
     const floatingIcons = [Code, Cpu, Rocket, CloudLightning];
@@ -136,6 +137,11 @@ const BottomRight = () => {
                     );
                 })}
             </div>
+
+            {/* TODO: */}
+            {/* <div className="hidden md:block transition-opacity duration-500">
+                <AICTAButton />
+            </div> */}
 
             {/* Contact Button with entrance animation */}
             <MotionDiv
