@@ -25,7 +25,7 @@ const skillIcons: Record<string, { icon: IconType; color: string }> = {
     "JavaScript (ES6+)": { icon: Si.SiJavascript, color: "#f7df1e" },
     TypeScript: { icon: Si.SiTypescript, color: "#3178c6" },
     HTML5: { icon: Si.SiHtml5, color: "#e34f26" },
-    CSS3: { icon: Si.SiCss3, color: "#1572b6" },
+    CSS3: { icon: Si.SiCss, color: "#1572b6" },
     "React.js": { icon: Si.SiReact, color: "#61dafb" },
     "Next.js": { icon: Si.SiNextdotjs, color: "#ffffff" },
     Vite: { icon: Si.SiVite, color: "#646cff" },
