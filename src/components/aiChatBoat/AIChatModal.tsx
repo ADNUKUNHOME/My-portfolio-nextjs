@@ -7,9 +7,30 @@ import { useEffect } from "react";
 type AIChatModalProps = {
     isOpen: boolean;
     onClose: () => void;
+    children?: React.ReactNode;
 };
 
-export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
+
+
+export default function AIChatModal({
+    isOpen,
+    onClose,
+    children
+}: AIChatModalProps) {
+
+    // Manage scroll
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen]);
+
     // Close on ESC
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
@@ -45,16 +66,17 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                     stiffness: 120,
                     damping: 15,
                 }}
-                className="relative z-10 w-[90%] max-w-md h-[70vh] 
+                className="relative z-10 w-[90%] max-w-md h-[70vh]
+                    flex flex-col
                    rounded-2xl border border-white/20 
                    bg-white/10 backdrop-blur-2xl 
                    shadow-2xl overflow-hidden"
             >
                 {/* Glow effect */}
-                <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 via-blue-500/20 to-cyan-400/20 blur-2xl opacity-50" />
+                <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-purple-500/20 via-blue-500/20 to-cyan-400/20 blur-2xl opacity-50" />
 
                 {/* Header */}
-                <div className="relative z-10 flex items-center justify-between px-4 py-3 border-b border-white/10">
+                <div className="flex items-center justify-between z-10 px-4 py-3 border-b border-white/10 shrink-0">
                     <h2 className="text-white font-medium">Adnan AI</h2>
 
                     <button
@@ -65,9 +87,9 @@ export default function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
                     </button>
                 </div>
 
-                {/* Body (EMPTY for now) */}
-                <div className="relative z-10 flex items-center justify-center h-full text-white/60 text-sm">
-                    Chat UI coming soon...
+                {/* Body */}
+                <div className="flex flex-col z-10 flex-1 min-h-0">
+                    {children}
                 </div>
             </MotionDiv>
         </MotionDiv>
