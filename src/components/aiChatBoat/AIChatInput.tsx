@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
@@ -25,12 +26,16 @@ export default function AIChatInput({ onSend, loading }: Props) {
                 className="flex-1 px-3 py-2 rounded-md bg-white/10 text-white outline-none"
             />
 
-            <button
-                onClick={handleSend}
-                className="px-4 py-2 bg-white/20 rounded-md text-white"
-            >
-                Send
-            </button>
+            {
+                text &&
+                <button
+                    onClick={handleSend}
+                    className="px-4 py-2 bg-white/20 rounded-md text-white cursor-pointer"
+                >
+                    <Send />
+                </button>
+            }
+
         </div>
     );
 }

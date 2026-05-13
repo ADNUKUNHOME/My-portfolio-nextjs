@@ -1,8 +1,15 @@
 "use client";
 
+import AILoading from "./AILoading";
 import { Message } from "./types";
 
-export default function AIChatMessages({ messages }: { messages: Message[] }) {
+export default function AIChatMessages({
+    messages,
+    loading,
+}: {
+    messages: Message[];
+    loading: boolean;
+}) {
     return (
         <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 && (
@@ -21,6 +28,7 @@ export default function AIChatMessages({ messages }: { messages: Message[] }) {
                     {msg.content}
                 </div>
             ))}
+            {loading && <AILoading />}
         </div>
     );
 }

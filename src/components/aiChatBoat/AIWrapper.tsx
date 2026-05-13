@@ -7,6 +7,7 @@ import AIChatMessages from "./AIChatMessages";
 import AIChatInput from "./AIChatInput";
 import { Message } from "./types";
 import { saveMessages, loadMessages, clearMessages } from "./storage";
+import AISuggestedQuestions from "./AISuggestedQuestions";
 
 export default function AIWrapper() {
     const [open, setOpen] = useState(false);
@@ -71,13 +72,19 @@ export default function AIWrapper() {
                 <div className="flex justify-end p-2">
                     <button
                         onClick={handleClear}
-                        className="text-xs text-white/60 hover:text-white"
+                        className="text-xs text-white/60 hover:text-white cursor-pointer"
                     >
                         Clear Chat
                     </button>
                 </div>
 
-                <AIChatMessages messages={messages} />
+                <AIChatMessages
+                    messages={messages}
+                    loading={loading}
+                />
+                {messages.length === 0 && (
+                    <AISuggestedQuestions onSelect={handleSend} />
+                )}
                 <AIChatInput onSend={handleSend} loading={loading} />
             </AIChatModal>
         </>
