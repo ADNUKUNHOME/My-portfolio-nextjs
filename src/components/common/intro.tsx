@@ -32,7 +32,7 @@ export default function Intro() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
-                    className="fixed inset-0 z-[2000] flex items-center justify-center bg-gradient-to-b from-black via-[#0a0a0a] to-black"
+                    className="fixed inset-0 z-9999 flex items-center justify-center bg-gradient-to-b from-black via-[#0a0a0a] to-black"
                 >
                     {/* Glow background */}
                     <MotionDiv

@@ -13,7 +13,7 @@ export default function AIOrb({ onClick }: AIOrbProps) {
 
     return (
         <MotionDiv
-            className="fixed bottom-6 right-6 z-9999 cursor-pointer"
+            className="fixed bottom-6 right-6 z-8888 cursor-pointer"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}

@@ -17,7 +17,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({ setOpen, open }) => {
                         onClick={() => setOpen((prev) => !prev)}
                         whileHover={{ rotate: 180 }}
                         transition={{ duration: 0.5 }}
-                        className="relative w-12 h-12 flex flex-col justify-center items-center bg-[#e8e8e3] hover:bg-[#e8e8e3] rounded-full z-[10000]"
+                        className="relative w-12 h-12 flex flex-col justify-center items-center bg-[#e8e8e3] hover:bg-[#e8e8e3] rounded-full z-9000"
                     >
                         <MotionSpan
                             className="w-7 h-1 bg-[#1f1c19] rounded"
@@ -34,7 +34,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({ setOpen, open }) => {
                     <AnimatePresence>
                         {open && (
                             <MotionDiv
-                                className="fixed inset-0 z-[10000]"
+                                className="fixed inset-0 z-9000"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}

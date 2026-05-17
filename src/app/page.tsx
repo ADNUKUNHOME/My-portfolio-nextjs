@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import Hero from "@/components/home/hero/hero";
 import AboutMe from "@/components/home/aboutMe";
 import Frontend from "@/components/home/skills/frontend/frontend";
@@ -15,6 +15,7 @@ import Intro from "@/components/common/intro";
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const showcaseRef = useRef<HTMLDivElement | null>(null);
+  const [showMenuButton, setShowMenuButton] = useState(false);
   const [open, setOpen] = useState(false);
 
 
@@ -43,23 +44,24 @@ export default function Home() {
 
   const step = 1 / 6;
 
-  const showMenuButton = useTransform(scrollYProgress, [0, 2 * step, 2 * step], [0, 0, 1]);
-
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setShowMenuButton(latest > 0.15);
+  });
 
   const heroOpacity = useTransform(scrollYProgress, [0, step * 2], [1, 0]);
   const heroTranslate = useTransform(scrollYProgress, [0, step], [0, -50]);
 
   const aboutMeTranslate = useTransform(
-  scrollYProgress,
-  [0.1 * step, 1.2 * step, 2 * step],
-  ["100vh", "0vh", "0vh"]
-);
+    scrollYProgress,
+    [0.1 * step, 1.2 * step, 2 * step],
+    ["100vh", "0vh", "0vh"]
+  );
 
-const frontendTranslate = useTransform(
-  scrollYProgress,
-  [1.3 * step, 2.3 * step, 3.1 * step],
-  ["100vh", "0vh", "0vh"]
-);
+  const frontendTranslate = useTransform(
+    scrollYProgress,
+    [1.3 * step, 2.3 * step, 3.1 * step],
+    ["100vh", "0vh", "0vh"]
+  );
 
 
   const backendTranslate = useTransform(
@@ -153,8 +155,12 @@ const frontendTranslate = useTransform(
       </MotionSection>
 
       <MotionDiv
-        style={{ opacity: showMenuButton, scale: showMenuButton }}
-        className="fixed top-5 right-10 z-[1000]"
+        animate={{
+          opacity: showMenuButton ? 1 : 0,
+          pointerEvents: showMenuButton ? "auto" : "none",
+        }}
+        transition={{ duration: 0.2 }}
+        className="fixed top-5 right-10 z-9000"
       >
         <MenuButton open={open} setOpen={setOpen} />
       </MotionDiv>
