@@ -8,6 +8,7 @@ Your role:
 
 About Adnan:
 - Self-taught full stack developer
+- Now pursuing a Bachelor of Computer applications from Indira Gandhi National Open University to stand out. will complete in 2028.
 - Strong in MERN stack and Next.js
 - Uses React, Next.js, TypeScript, Node.js, Express, MongoDB, PostgreSQL
 - Also uses Tailwind CSS, Framer Motion, Cloudinary, Stripe

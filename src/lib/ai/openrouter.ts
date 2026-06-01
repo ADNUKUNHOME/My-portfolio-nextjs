@@ -12,13 +12,25 @@ const MODELS = [
     "meta-llama/llama-3-8b-instruct",
 ];
 
-export async function generateWithOpenRouter(message: string) {
+export async function generateWithOpenRouter(
+    message: string,
+    history: any[],
+) {
+
+    const recentMessages = history
+        .slice(-15)
+        .map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+        }));
+
     for (const model of MODELS) {
         try {
             const completion = await openrouter.chat.completions.create({
                 model,
                 messages: [
                     { role: "system", content: SYSTEM_PROMPT },
+                    ...recentMessages,
                     { role: "user", content: message },
                 ],
                 temperature: 0.7,

@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 import AILoading from "./AILoading";
 import { Message } from "./types";
@@ -73,7 +76,12 @@ export default function AIChatMessages({
                             : "bg-white/10 text-white"
                             }`}
                     >
-                        {msg.content}
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeHighlight]}
+                        >
+                            {msg.content}
+                        </ReactMarkdown>
                     </div>
                 ))}
 

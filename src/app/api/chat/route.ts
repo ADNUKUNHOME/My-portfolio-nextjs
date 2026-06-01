@@ -13,6 +13,7 @@ export async function POST(req: Request) {
         }
 
         const userMessage = body.message.trim();
+        const previousMessages = body.messages || [];
 
         if (userMessage.length > 500) {
             return NextResponse.json(
@@ -24,7 +25,10 @@ export async function POST(req: Request) {
         let reply = "";
 
         try {
-            reply = await generateWithOpenRouter(userMessage);
+            reply = await generateWithOpenRouter(
+                userMessage,
+                previousMessages,
+            );
         } catch (err) {
             return NextResponse.json({
                 success: true,

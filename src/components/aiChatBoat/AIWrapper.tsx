@@ -34,7 +34,10 @@ export default function AIWrapper() {
         try {
             const res = await fetch("/api/chat", {
                 method: "POST",
-                body: JSON.stringify({ message: text }),
+                body: JSON.stringify({
+                    message: text,
+                    messages,
+                }),
             });
 
             const data = await res.json();
