@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { SYSTEM_PROMPT } from "./systemPrompt";
+import { PROJECTS_CONTEXT } from "./projectsPrompt";
 
 const openrouter = new OpenAI({
     apiKey: process.env.OPENROUTER_API_KEY,
@@ -30,6 +31,7 @@ export async function generateWithOpenRouter(
                 model,
                 messages: [
                     { role: "system", content: SYSTEM_PROMPT },
+                    { role: "system", content: PROJECTS_CONTEXT },
                     ...recentMessages,
                     { role: "user", content: message },
                 ],

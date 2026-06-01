@@ -18,7 +18,13 @@ export default function AIChatInput({ onSend, loading }: Props) {
     };
 
     return (
-        <div className="p-3 border-t border-white/10 flex gap-2">
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
+            }}
+            className="p-3 border-t border-white/10 flex gap-2"
+        >
             <input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -26,16 +32,14 @@ export default function AIChatInput({ onSend, loading }: Props) {
                 className="flex-1 px-3 py-2 rounded-md bg-white/10 text-white outline-none"
             />
 
-            {
-                text &&
+            {text && (
                 <button
-                    onClick={handleSend}
+                    type="submit"
                     className="px-4 py-2 bg-white/20 rounded-md text-white cursor-pointer"
                 >
                     <Send />
                 </button>
-            }
-
-        </div>
+            )}
+        </form>
     );
 }

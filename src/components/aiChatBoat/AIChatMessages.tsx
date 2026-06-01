@@ -79,6 +79,18 @@ export default function AIChatMessages({
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             rehypePlugins={[rehypeHighlight]}
+                            components={{
+                                a: ({ href, children }) => (
+                                    <a
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-400 underline hover:text-blue-300"
+                                    >
+                                        {children}
+                                    </a>
+                                ),
+                            }}
                         >
                             {msg.content}
                         </ReactMarkdown>
