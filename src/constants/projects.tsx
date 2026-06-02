@@ -14,7 +14,7 @@ export const MyProjects = [
     title: "NewWay",
     description:
       "AI-powered platform that creates personalized student roadmaps with skill recommendations, milestones, and project-based learning paths.",
-    tech: ["Next.js", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT Auth", "Framer Motion", "Cloudinary"],
+    tech: ["Next.js", "Typescript", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT Auth", "Framer Motion", "Cloudinary"],
     videoSrc: "https://res.cloudinary.com/dr7niljpd/video/upload/f_auto,q_auto,vc_auto,br_auto,w_800/v1756838130/NewWay_clip_la62ye_lsnowr.mp4",
     imageSrc: "https://res.cloudinary.com/dr7niljpd/image/upload/f_auto,q_auto/v1756902782/IMG-20250829-WA0040_mhfdbp_bmfvt4.jpg",
     liveLink: "https://newway-woad.vercel.app/",
@@ -22,10 +22,21 @@ export const MyProjects = [
     year: "2025"
   },
   {
+    title: "Multiplayer Tic-Tac-Toe",
+    description:
+      "A real-time multiplayer Tic-Tac-Toe game featuring quick matchmaking, private room creation, live game updates, player statistics, and leaderboards. Players can compete with strangers or friends while tracking their performance through an interactive dashboard.",
+    tech: ["Next.js", "Typescript", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Web Socket", "Socket.io"],
+    videoSrc: "https://res.cloudinary.com/dr7niljpd/video/upload/f_auto,q_auto,vc_auto,br_auto,w_800/v1780418849/Lila_Multiplayer_Tic_Tac_Toe_nm8rxw.mp4",
+    imageSrc: "https://res.cloudinary.com/dr7niljpd/image/upload/f_auto,q_auto/v1780422646/Lila_Multiplayer_Tic_Tac_Toe_-_Google_Chrome_02-06-2026_07_24_59_nkshc6.jpg",
+    liveLink: "https://lila-tictactoe.vercel.app",
+    githubLink: "https://github.com/ADNUKUNHOME/LILA-MULTIPLAYER-TICTACTOE",
+    year: "2026"
+  },
+  {
     title: "Shortly",
     description:
       "PDF summarizer app that uses AI to generate concise summaries, with authentication, storage, and a clean dashboard.",
-    tech: ["Next.js", "Tailwind CSS", "PostgreSQL (Neon)", "Clerk Auth", "OpenAI/Gemini API", "Vercel Deployment"],
+    tech: ["Next.js", "Typescript", "Tailwind CSS", "PostgreSQL (Neon)", "Clerk Auth", "OpenAI/Gemini API", "Vercel Deployment"],
     videoSrc: "https://res.cloudinary.com/dr7niljpd/video/upload/f_auto,q_auto,vc_auto,br_auto,w_800/v1756838084/InShot_20250902_132421494_yzjjsw_oujfa7.mp4",
     imageSrc: "https://res.cloudinary.com/dr7niljpd/image/upload/f_auto,q_auto/v1756902852/IMG-20250902-WA0012_l93sz7_j9jlde.jpg",
     liveLink: "https://shortly-ai-summarize.vercel.app",
