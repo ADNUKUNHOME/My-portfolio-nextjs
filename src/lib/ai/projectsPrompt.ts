@@ -2,6 +2,7 @@ export const PROJECTS_CONTEXT = `
 Adnan's Notable Projects:
 
 1. Personal Portfolio
+- One of his most important projects.
 - Modern portfolio website showcasing skills, projects, education, and professional background
 - Includes an AI-powered personal assistant and blog platform
 - Focuses on clean UI, animations, and user experience
@@ -12,6 +13,12 @@ Adnan's Notable Projects:
 - Generates personalized learning roadmaps and resources based on a user's background and goals
 - Uses AI to provide tailored career guidance
 - URL: https://newway-woad.vercel.app
+
+2. Multiplayer Tic-tac-toe
+- A real-time multiplayer Tic-Tac-Toe game featuring quick matchmaking, private room creation, live game updates, player statistics, and leaderboards.
+- Players can compete with strangers or friends while tracking their performance through an interactive dashboard.
+- Uses Web Socket and Socket.io for live interactions
+- URL: https://lila-tictactoe.vercel.app
 
 3. Shortly
 - AI-powered PDF summarizer
@@ -41,4 +48,6 @@ Adnan's Notable Projects:
 7. Client Portfolio Websites
 - Built professional portfolio websites for clients
 - Focused on performance, responsive design, and modern user experience
+
+If user asks about tech stack of a specific project, tell them the complete projects details are showcasing in the project section of the currect using portfolio.
 `;

@@ -45,7 +45,11 @@ export default function Home() {
   const step = 1 / 6;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setShowMenuButton(latest > 0.15);
+    const visible = latest > 0.15;
+
+    setShowMenuButton(prev =>
+      prev === visible ? prev : visible
+    );
   });
 
   const heroOpacity = useTransform(scrollYProgress, [0, step * 2], [1, 0]);
@@ -149,7 +153,7 @@ export default function Home() {
         id="about"
         style={{ y: aboutMeTranslate }}
         transition={{ ease: "easeInOut", duration: 0.8 }}
-        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800 rounded-2xl fixed top-0 left-0 w-full will-change-transform z-20"
+        className="h-screen flex items-center justify-center bg-[#e8e8e3] text-black border border-gray-800 rounded-2xl fixed top-0 left-0 w-full z-20"
       >
         <AboutMe />
       </MotionSection>
@@ -170,7 +174,7 @@ export default function Home() {
       {/* Frontend */}
       <MotionSection
         style={{ y: frontendTranslate }}
-        className="h-screen flex items-center justify-center bg-[#1f1c19] text-[#e8e8e3] border border-gray-800 fixed rounded-2xl top-0 left-0 w-full will-change-transform z-30"
+        className="h-screen flex items-center justify-center bg-[#1f1c19] text-[#e8e8e3] border border-gray-800 fixed rounded-2xl top-0 left-0 w-full z-30"
       >
         <Frontend />
       </MotionSection>
